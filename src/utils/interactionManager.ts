@@ -2,7 +2,7 @@ import { InteractionManager } from 'react-native';
 
 export default {
   ...InteractionManager,
-  runAfterInteractions: f => {
+  runAfterInteractions: (f: () => void) => {
     let called = false;
     const timeout = setTimeout(() => {
       called = true;

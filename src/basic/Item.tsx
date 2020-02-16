@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-loop-func */
 import React, { Component } from 'react';
 import { TouchableOpacity, Animated, Platform, View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { isArray, remove } from 'lodash';
@@ -29,7 +27,9 @@ type ItemState = {
 };
 
 class Item extends Component<ItemProps, ItemState> {
-  constructor(props) {
+  inputProps: any;
+  _root = React.createRef<TouchableOpacity>();
+  constructor(props: ItemProps) {
     super(props);
     this.state = {
       isFocused: false,
@@ -51,10 +51,13 @@ class Item extends Component<ItemProps, ItemState> {
       if (this.inputProps && this.inputProps.getRef) this.inputProps.getRef(this._inputRef);
     }
   }
+  _inputRef(_inputRef: any) {
+    throw new Error('Method not implemented.');
+  }
   // Temporary fix to avoid the crash.
   // To be refactored to getDerivedStateFromProps.
   // eslint-disable-next-line camelcase
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: ItemProps) {
     const childrenArray = React.Children.toArray(nextProps.children);
 
     remove(childrenArray, item => {
@@ -387,7 +390,7 @@ class Item extends Component<ItemProps, ItemState> {
   }
   render() {
     return (
-      <TouchableOpacity ref={c => (this._root = c)} {...this.prepareRootProps()} activeOpacity={1}>
+      <TouchableOpacity ref={this._root} {...this.prepareRootProps()} activeOpacity={1}>
         {this.renderChildren()}
       </TouchableOpacity>
     );

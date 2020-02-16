@@ -8,8 +8,9 @@ type SeparatorProps = {
 };
 
 class Separator extends Component<SeparatorProps, {}> {
+  _root = React.createRef<View>();
   render() {
-    return <View ref={c => (this._root = c)} {...this.props} />;
+    return <View ref={this._root} {...this.props} />;
   }
 }
 const StyledSeparator = connectStyle('NativeBase.Separator', {}, mapPropsToStyleNames)(Separator);
