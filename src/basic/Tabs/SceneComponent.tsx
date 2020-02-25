@@ -1,9 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
 import StaticContainer from './StaticContainer';
 
-interface SceneComponentProps {
+interface SceneComponentProps extends ViewProps {
   shouldUpdated: boolean;
 }
 export const SceneComponent: React.SFC<SceneComponentProps & View> = Props => {

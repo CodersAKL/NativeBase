@@ -1,7 +1,7 @@
 // import typescript from '@rollup/plugin-typescript';
 import typescript from 'rollup-plugin-typescript2';
 // import typescript from '@rollup/plugin-sucrase';
-import flow from 'rollup-plugin-flow';
+// import flow from 'rollup-plugin-flow';
 // import commonjs from 'rollup-plugin-commonjs';
 import commonjs from '@rollup/plugin-commonjs';
 import externalPeer from 'rollup-plugin-peer-deps-external';
@@ -11,10 +11,11 @@ import multiInput from 'rollup-plugin-multi-input';
 // import sourceMaps from 'rollup-plugin-sourcemaps';
 import babel from 'rollup-plugin-babel';
 import jsx from 'acorn-jsx';
+import path from 'path';
 
 import pkg from './package.json';
-import bCfg from './babel.config.json';
 import tsconfig from './tsconfig.json';
+const bCfg = pkg.babel;
 const extensions = ['.tsx', '.json', '.ts'];
 const dependencies = ({ dependencies }) => Object.keys(dependencies || {});
 const external = dependencies(pkg);
@@ -23,13 +24,13 @@ export default {
   input: ['src/**/*.ts', 'src/**/*.tsx', '!src/__tests__/**/*'],
   output: [
     {
-      dir: pkg.main,
+      dir: path.dirname(pkg.main),
       format: 'cjs',
       exports: 'named',
       sourcemap: true
     },
     {
-      dir: pkg.module,
+      dir: path.dirname(pkg.module),
       format: 'es',
       exports: 'named',
       sourcemap: true

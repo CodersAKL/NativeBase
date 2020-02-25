@@ -4,8 +4,8 @@ import _ from 'lodash';
 
 import { InteractionManager, ViewPropTypes } from '../../utils';
 
-const React = require('react');
-const ReactNative = require('react-native');
+import React from 'react';
+import ReactNative from 'react-native';
 const { Dimensions, View, Animated, ScrollView, StyleSheet } = ReactNative;
 import TimerMixin from 'react-timer-mixin';
 

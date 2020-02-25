@@ -12,10 +12,10 @@
     "navbar",
     "packager"
   ],
-  "version": "0.0.1",
-  "main": "dist/",
-  "module": "dist/es/",
-  "jsnext:main": "dist/es/",
+  "version": "2.13.8",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
   "files": [
     "dist",
     "README.md",
@@ -31,9 +31,6 @@
     "url": "https://opencollective.com/NativeBase"
   },
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
     "test": "jest --noStackTrace --notify --detectOpenHandles",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "generate": "plop",
@@ -46,6 +43,8 @@
     "build:r": "rollup -c"
   },
   "dependencies": {
+    "blueimp-md5": "^2.12.0",
+    "color": "^3.1.2",
     "lodash": "^4.17.15",
     "native-base": "^2.13.8",
     "native-base-shoutem-theme": "^0.3.1",
@@ -95,7 +94,8 @@
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.19.2",
     "acorn-jsx": "^5.1.0",
-    "babel-jest": "^25.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-typescript-to-proptypes": "^1.2.1",
     "detox": "^15.1.4",
@@ -112,6 +112,7 @@
     "prettier": "^1.19.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "16.12.0",
+    "react-to-typescript-definitions": "^2.0.0",
     "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-flow": "^1.1.1",
@@ -122,12 +123,34 @@
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.1.0",
     "tsc-silent": "^1.2.1",
+    "tslib": "^1.11.0",
     "typescript": "^3.8.0-beta",
     "vue": "^2.6.11"
   },
   "peerDependencies": {
     "react": ">=16.4.1",
     "react-native": ">=0.56.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react",
+      "@babel/env",
+      "@babel/typescript"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        null
+      ],
+      [
+        "babel-plugin-typescript-to-proptypes",
+        {
+          "comments": true,
+          "strict": true,
+          "typeCheck": true
+        }
+      ]
+    ]
   },
   "detox": {
     "test-runner": "jest",
