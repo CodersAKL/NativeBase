@@ -39,7 +39,7 @@ interface ScrollableTabBarState {
 export class ScrollableTabBar extends React.Component<ScrollableTabBarProps, ScrollableTabBarState> {
   _tabsMeasurements = [];
   static contextTypes: {
-    theme: SimpleObject;
+    theme: any;
   };
   static defaultProps = {
     scrollOffset: 52,

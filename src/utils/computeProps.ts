@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { StyleSheet } from 'react-native';
 
-export default function(incomingProps: SimpleObject, defaultProps: SimpleObject) {
+export default function(incomingProps: any, defaultProps: any) {
   // External props has a higher precedence
   let computedProps = {} as any;
 
