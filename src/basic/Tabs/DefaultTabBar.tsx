@@ -1,48 +1,50 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import _ from 'lodash';
 import { connectStyle } from 'native-base-shoutem-theme';
-import PropTypes from 'prop-types';
-import ReactNative from 'react-native';
+import ReactNative, { ViewStyle, StyleProp, Animated } from 'react-native';
 
 import mapPropsToStyleNames from '../../utils/mapPropsToStyleNames';
 import variable from './../../theme/variables/platform';
 import { TabHeading } from '../TabHeading';
 import { Text } from '../Text';
 import { TabContainer } from '../TabContainer';
-import { ViewPropTypes } from '../../utils';
 import { Button } from './Button';
 
 const { Animated } = ReactNative;
-const DefaultTabBar = createReactClass({
-  propTypes: {
-    goToPage: PropTypes.func,
-    activeTab: PropTypes.number,
-    tabs: PropTypes.array,
-    backgroundColor: PropTypes.string,
-    activeTextColor: PropTypes.string,
-    inactiveTextColor: PropTypes.string,
-    disabledTextColor: PropTypes.string,
-    tabStyle: ViewPropTypes.style,
-    renderTab: PropTypes.func,
-    underlineStyle: ViewPropTypes.style,
-    tabContainerStyle: ViewPropTypes.style
-  },
-  contextTypes: {
-    theme: PropTypes.object
-  },
-  getDefaultProps() {
-    return {
-      activeTextColor: variable.topTabBarActiveTextColor,
-      inactiveTextColor: variable.topTabBarTextColor,
-      disabledTextColor: variable.tabBarDisabledTextColor,
-      backgroundColor: 'transparent',
-      tabFontSize: variable.tabFontSize
-    };
-  },
-  renderTabOption() {},
+
+interface ComponentProps {
+  goToPage: () => void;
+  activeTab: number;
+  tabs: [];
+  backgroundColor: string;
+  activeTextColor: string;
+  inactiveTextColor: string;
+  disabledTextColor: string;
+  tabStyle: StyleProp<ViewStyle>;
+  renderTab: () => void;
+  underlineStyle: StyleProp<ViewStyle>;
+  tabContainerStyle: StyleProp<ViewStyle>;
+  containerWidth: number;
+  scrollValue: number;
+}
+class DefaultTabBar extends React.Component<ComponentProps, {}, {}> {
+  static contextTypes: {
+    theme: object;
+  };
+  static defaultProps = {
+    activeTextColor: variable.topTabBarActiveTextColor,
+    inactiveTextColor: variable.topTabBarTextColor,
+    disabledTextColor: variable.tabBarDisabledTextColor,
+    backgroundColor: 'transparent',
+    tabFontSize: variable.tabFontSize,
+    scrollValue: new Animated.Value(0)
+  };
+
+  scrollValue = new Animated.Value(0);
+
+  renderTabOption() {}
   renderTab(
-    name,
+    name: string,
     page,
     isTabActive,
     onPressHandler,
@@ -86,7 +88,8 @@ const DefaultTabBar = createReactClass({
         </TabHeading>
       </Button>
     );
-  },
+  }
+
   render() {
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;
     const containerWidth = this.props.containerWidth;
@@ -98,7 +101,7 @@ const DefaultTabBar = createReactClass({
       backgroundColor: variables.topTabBarActiveBorderColor,
       bottom: 0
     };
-    const left = this.props.scrollValue.interpolate({
+    const left = this.scrollValue.interpolate({
       inputRange: [0, 1],
       outputRange: [0, containerWidth / numberOfTabs]
     });
@@ -133,7 +136,7 @@ const DefaultTabBar = createReactClass({
       </TabContainer>
     );
   }
-});
+}
 // module.exports = DefaultTabBar;
 const StyledTab = connectStyle('NativeBase.DefaultTabBar', {}, mapPropsToStyleNames)(DefaultTabBar);
 

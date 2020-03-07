@@ -18,7 +18,7 @@ class Footer extends Component<FooterProps, {}> {
           backgroundColor: getStyle(style).backgroundColor
         }}
       >
-        <View ref={c => (this._root = c)} {...this.props} />
+        <View {...this.props} />
       </SafeAreaView>
     );
   }

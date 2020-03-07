@@ -15,6 +15,7 @@ type GravatarProps = {
   size?: number;
   circular?: boolean;
   square?: boolean;
+  contain?: boolean;
 };
 
 class Gravatar extends NativeBaseComponent<GravatarProps, {}> {
@@ -28,29 +29,29 @@ class Gravatar extends NativeBaseComponent<GravatarProps, {}> {
       }
     };
   }
-  prepareRootProps() {
-    const gravatarStyle = {};
+  prepareRootProps = () => {
+    const gravatarStyle = {
+      width: this.props.size,
+      height: this.props.size,
+      borderRadius: 0
+    };
 
     if (this.props.circular) {
       gravatarStyle.width = this.props.size;
       gravatarStyle.height = this.props.size;
       gravatarStyle.borderRadius = this.props.size / 2;
-    } else if (this.props.square) {
-      gravatarStyle.width = this.props.size;
-      gravatarStyle.height = this.props.size;
-      gravatarStyle.borderRadius = 0;
     }
     const defaultProps = {
       style: _.merge(this.getInitialStyle().gravatar, gravatarStyle)
     };
 
     return computeProps(this.props, defaultProps);
-  }
+  };
   render() {
     const props = this.prepareRootProps();
     const uri = `${GRAVATAR_URI + md5(this.props.email)}?s=${props.style.height}`;
 
-    return <Image ref={c => (this._root = c)} {...props} source={{ uri }} />;
+    return <Image {...props} source={{ uri }} />;
   }
 }
 const StyledGravatar = connectStyle('NativeBase.Gravatar', {}, mapPropsToStyleNames)(Gravatar);

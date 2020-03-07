@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Animated, PanResponder, StyleProp, ViewStyle } from 'react-native';
+import { View, Animated, PanResponder, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 import clamp from 'clamp';
 import { connectStyle } from 'native-base-shoutem-theme';
 
@@ -8,7 +8,15 @@ const SWIPE_THRESHOLD = 120;
 
 type DeckSwiperProps = {
   style?: StyleProp<ViewStyle>;
-  dataSource?: any[];
+  dataSource: any[];
+  onSwipeLeft: (item: any) => void;
+  onSwiping: (direction: 'right' | 'left' | null, state?: number) => void;
+  onSwipeRight: (item: any) => void;
+  renderTop?: (item: React.ReactNode) => void;
+  renderItem: (item: React.ReactNode) => void;
+  renderBottom?: (item: React.ReactNode) => void;
+  renderEmpty?: () => React.ReactNode;
+  looping?: boolean;
 };
 type DeckSwiperState = any & { selectedItem: any; selectedItem2: any } & {
   card1Top: boolean;
@@ -30,7 +38,8 @@ type DeckSwiperState = any & { selectedItem: any; selectedItem2: any } & {
 };
 
 class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
-  constructor(props) {
+  _panResponder: any;
+  constructor(props: DeckSwiperProps) {
     super(props);
     this.state = {
       pan: new Animated.ValueXY(),
@@ -45,9 +54,9 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       disabled: this.props.dataSource.length === 0,
       lastCard: this.props.dataSource.length === 1
     };
-    this.setPanresponder();
+    this.setPanResponder();
   }
-  componentDidUpdate({ dataSource }) {
+  componentDidUpdate({ dataSource }: { dataSource: string[] }) {
     if (dataSource.length !== this.props.dataSource.length) {
       if (dataSource.length <= 1) {
         this.setState({
@@ -101,10 +110,9 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
 
     return [animatedCardStyles, animatedCardStyles2];
   }
-  setPanresponder() {
+  setPanResponder() {
     this._panResponder = PanResponder.create({
-      onMoveShouldSetResponderCapture: () => true,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => Math.abs(gestureState.dx) > 5,
+      onMoveShouldSetPanResponderCapture: (_evt, gestureState) => Math.abs(gestureState.dx) > 5,
       onPanResponderGrant: () => {
         this.state.pan.setOffset({
           x: this.state.pan.x._value,
@@ -234,7 +242,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
 
     return null;
   }
-  findNextIndexes(currentIndex) {
+  findNextIndexes(currentIndex: number) {
     const newIdx = currentIndex + 1;
     const newIdx2 = currentIndex + 2;
 
@@ -249,15 +257,11 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
   render() {
     if (this.state.disabled) {
       // disable swiping and renderEmpty
-      return (
-        <View style={{ position: 'relative', flexDirection: 'column' }}>
-          {<View>{this.props.renderEmpty && this.props.renderEmpty()}</View>}
-        </View>
-      );
+      return <View style={styles.wrapper}>{<View>{this.props.renderEmpty && this.props.renderEmpty()}</View>}</View>;
     } else if (this.state.lastCard) {
       // display renderEmpty underneath last viable card
       return (
-        <View style={{ position: 'relative', flexDirection: 'column' }}>
+        <View style={styles.wrapper}>
           {this.state.selectedItem === undefined ? (
             <View />
           ) : (
@@ -281,7 +285,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
     }
 
     return (
-      <View style={{ position: 'relative', flexDirection: 'column' }}>
+      <View style={styles.wrapper}>
         {this.state.selectedItem === undefined ? (
           <View />
         ) : (
@@ -311,3 +315,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
 const StyledDeckSwiper = connectStyle('NativeBase.DeckSwiper', {}, mapPropsToStyleNames)(DeckSwiper);
 
 export { StyledDeckSwiper as DeckSwiper };
+
+const styles = StyleSheet.create({
+  wrapper: { position: 'relative', flexDirection: 'column' }
+});

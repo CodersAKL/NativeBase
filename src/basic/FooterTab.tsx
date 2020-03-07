@@ -9,11 +9,7 @@ type FooterTabProps = {
 
 class FooterTab extends Component<FooterTabProps, {}> {
   render() {
-    return (
-      <View ref={c => (this._root = c)} {...this.props}>
-        {this.props.children}
-      </View>
-    );
+    return <View {...this.props}>{this.props.children}</View>;
   }
 }
 const StyledFooterTab = connectStyle('NativeBase.FooterTab', {}, mapPropsToStyleNames)(FooterTab);

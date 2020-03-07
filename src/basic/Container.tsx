@@ -8,13 +8,8 @@ type ContainerProps = {
 };
 
 class ContainerComponent extends Component<ContainerProps, {}> {
-  _root = React.createRef<View>();
   render() {
-    return (
-      <View ref={this._root} {...this.props}>
-        {this.props.children}
-      </View>
-    );
+    return <View {...this.props}>{this.props.children}</View>;
   }
 }
 

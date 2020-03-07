@@ -9,7 +9,7 @@ type FormProps = {
 
 class Form extends Component<FormProps, {}> {
   render() {
-    return <View ref={c => (this._root = c)} {...this.props} />;
+    return <View {...this.props} />;
   }
 }
 const StyledForm = connectStyle('NativeBase.Form', {}, mapPropsToStyleNames)(Form);

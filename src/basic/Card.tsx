@@ -17,16 +17,12 @@ class Card extends Component<CardProps, {}> {
           {...this.props}
           data={this.props.dataArray}
           renderItem={this.props.renderRow}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(_item, index) => index.toString()}
         />
       );
     }
 
-    return (
-      <View ref={c => (this._root = c)} {...this.props}>
-        {this.props.children}
-      </View>
-    );
+    return <View {...this.props}>{this.props.children}</View>;
   }
 }
 const StyledCard = connectStyle('NativeBase.Card', {}, mapPropsToStyleNames)(Card);

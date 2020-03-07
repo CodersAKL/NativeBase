@@ -1,11 +1,9 @@
-// @flow
-
 import { Platform } from 'react-native';
 
 import variable from '../variables/platform';
 import { PLATFORM } from '../variables/commonColor';
 
-export default (variables /* : * */ = variable) => {
+export default (variables = variable) => {
   const subtitleTheme = {
     fontSize: variables.subTitleFontSize,
     fontFamily: variables.titleFontfamily,

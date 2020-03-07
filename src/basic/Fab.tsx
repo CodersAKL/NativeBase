@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, Animated, TouchableOpacity, TouchableNativeFeedback, View, StyleSheet } from 'react-native';
+import {
+  Platform,
+  Animated,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle
+} from 'react-native';
 import { remove, merge, clone } from 'lodash';
 import { connectStyle } from 'native-base-shoutem-theme';
 
@@ -23,28 +32,32 @@ const POSITION = {
 const AnimatedFab = Animated.createAnimatedComponent(Button);
 
 type FabState = {
-  buttons: any;
-  active: any;
-  active: boolean;
-  active: boolean;
-  active: boolean;
-  active: boolean;
-  active: any;
-  buttons: undefined;
+  buttons: number;
   active: boolean;
 };
 
-class Fab extends Component<{}, FabState> {
-  constructor(props) {
-    super(props);
-    this.containerHeight = new Animated.Value(variables.fabWidth);
-    this.containerWidth = new Animated.Value(0);
-    this.buttonScale = new Animated.Value(0);
-    this.state = {
-      buttons: undefined,
-      active: false
-    };
-  }
+type FabProps = {
+  active: boolean;
+  direction?: string;
+  position?: keyof typeof POSITION;
+  style?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+};
+
+class Fab extends Component<FabProps, FabState> {
+  containerHeight = new Animated.Value(variables.fabWidth);
+  containerWidth = new Animated.Value(0);
+  buttonScale = new Animated.Value(0);
+  state = {
+    buttons: 0,
+    active: false
+  };
+  activeTimer: number = 0;
+
+  static defaultProps = {
+    active: false
+  };
+
   componentDidMount() {
     const childrenArray = React.Children.toArray(this.props.children);
     const icon = remove(childrenArray, item => {
@@ -90,7 +103,7 @@ class Fab extends Component<{}, FabState> {
   getContainerStyle() {
     return merge(this.getInitialStyle().container, this.props.containerStyle);
   }
-  getInitialStyle(iconStyle) {
+  getInitialStyle(iconStyle: StyleProp<ViewStyle>) {
     const { direction, position } = this.props;
 
     return {
@@ -145,7 +158,7 @@ class Fab extends Component<{}, FabState> {
       }
     };
   }
-  prepareButtonProps = child => {
+  prepareButtonProps = (child: React.ReactElement) => {
     const inp = clone(child.props);
 
     delete inp.style;
@@ -153,7 +166,7 @@ class Fab extends Component<{}, FabState> {
 
     return computeProps(inp, defaultProps);
   };
-  fabTopValue = pos => {
+  fabTopValue = (pos: string) => {
     if (pos === POSITION.TOP_LEFT) {
       return {
         top: variables.fabDefaultPosition,
