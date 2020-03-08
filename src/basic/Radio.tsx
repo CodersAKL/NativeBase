@@ -23,7 +23,7 @@ class Radio extends Component<RadioProps, {}> {
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;
 
     return (
-      <TouchableOpacity ref={c => (this._root = c)} {...this.prepareRootProps()}>
+      <TouchableOpacity {...this.prepareRootProps()}>
         {Platform.OS === 'ios' && !this.props.standardStyle ? (
           this.props.selected && (
             <Icon

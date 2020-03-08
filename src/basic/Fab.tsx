@@ -103,7 +103,7 @@ class Fab extends Component<FabProps, FabState> {
   getContainerStyle() {
     return merge(this.getInitialStyle().container, this.props.containerStyle);
   }
-  getInitialStyle(iconStyle: StyleProp<ViewStyle>) {
+  getInitialStyle(iconStyle: ViewStyle) {
     const { direction, position } = this.props;
 
     return {

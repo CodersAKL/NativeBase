@@ -35,13 +35,13 @@
     "test": "jest --noStackTrace --notify --detectOpenHandles",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "generate": "plop",
-    "compile": "rm -rf dist/* && tsc -p ./",
+    "compile": "rimraf dist/* && tsc -p ./",
     "transpile": "npm run compile && cp src/basic/Icon/NBIcons.json dist/src/basic/Icon",
     "prepublish": "npm run transpile",
     "postinstall": "node addEjectScript.js",
-    "build:js": "babel src --out-dir dist --ignore node_modules,dist,jest.config.js,src/__mocks__,src/__tests__ --source-maps --extensions \".ts,.tsx\"",
+    "build:js": "rimraf dist/* && babel src --out-dir dist --source-maps --extensions .ts,.tsx",
     "build:types": "dts-generator --name native-base --project ./tsconfig.json --out index.d.ts --main native-base/index --prefix native-base",
-    "build:r": "rollup -c"
+    "build:r": "rimraf dist/* && rollup -c"
   },
   "dependencies": {
     "blueimp-md5": "^2.12.0",
@@ -61,15 +61,16 @@
     "react-timer-mixin": "^0.13.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-typescript": "^7.8.7",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
-    "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^0.0.7",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
@@ -95,6 +96,7 @@
     "acorn-jsx": "^5.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
+    "babel-plugin-inline-json-import": "^0.3.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-typescript-to-proptypes": "^1.2.1",
     "detox": "^15.1.4",
@@ -131,25 +133,15 @@
     "react": ">=16.4.1",
     "react-native": ">=0.56.0"
   },
-  "babel": {
-    "presets": [
-      "@babel/react",
-      "@babel/env",
-      "@babel/typescript"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-class-properties",
-        null
-      ],
-      [
-        "babel-plugin-typescript-to-proptypes",
-        {
-          "comments": true,
-          "strict": true,
-          "typeCheck": true
-        }
-      ]
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
     ]
   },
   "detox": {

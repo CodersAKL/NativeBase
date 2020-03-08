@@ -30,7 +30,7 @@
       "assets/*": ["assets/*"]
     }
   },
-  "include": ["src/*", "types.d.ts"],
-  "exclude": ["node_modules", "src/__tests__"],
+  "include": ["src/*", "types.d.ts", "src/__tests__"],
+  "exclude": ["node_modules", "src/__tests__", "index.d.ts"],
   "compileOnSave": true
 }

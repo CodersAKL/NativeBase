@@ -7,9 +7,6 @@ import { Button } from '../../basic/Button';
 import { Toast } from '../../basic/Toast';
 import { Text } from '../../basic/Text';
 
-// Note: test renderer must be required after react-native.
-const cover = require('../assets/drawer-cover.png');
-
 jest.mock('Platform', () => {
   const Platform = require.requireActual('Platform');
 

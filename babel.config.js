@@ -1,27 +1,14 @@
 module.exports = {
-  presets: [
-    '@babel/preset-env',
-    'module:metro-react-native-babel-preset',
-    [
-      '@babel/preset-typescript',
-      {
-        isTSX: true,
-        allExtensions: true
-      }
-    ],
-    '@babel/preset-react'
-  ],
   plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-regenerator',
     [
-      'module-resolver',
+      '@babel/plugin-transform-runtime',
       {
-        root: ['./src'],
-        alias: {
-          app: './src',
-          assets: './assets'
-        }
+        helpers: false,
+        regenerator: true
       }
     ],
     [
@@ -33,7 +20,5 @@ module.exports = {
       }
     ]
   ],
-  only: ['./src'],
-  ignore: ['dist', 'jest.config.js', 'src/__mocks__', 'src/__tests__'],
-  include: ['node_modules/react-native-vector-icons/lib/create-icon-set.js']
+  presets: ['@babel/preset-env', 'module:metro-react-native-babel-preset', '@babel/preset-react', '@babel/typescript']
 };

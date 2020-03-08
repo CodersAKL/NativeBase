@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react';
-import { Animated, PanResponder, View, ViewStyle } from 'react-native';
+import { Animated, PanResponder, View, ViewStyle, LayoutChangeEvent, StyleSheet } from 'react-native';
 import { connectStyle } from 'native-base-shoutem-theme';
 
 import mapPropsToStyleNames from '../utils/mapPropsToStyleNames';
@@ -81,7 +81,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
       useNativeDriver: true
     });
   }
-  onContentLayout(e) {
+  onContentLayout(e: LayoutChangeEvent) {
     this.setState({
       dimensionsSet: !this.props.recalculateHiddenLayout,
       hiddenHeight: e.nativeEvent.layout.height,
@@ -232,7 +232,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
     return (
       <Animated.View
         {...this._panResponder.panHandlers}
-        onLayout={e => this.onContentLayout(e)}
+        onLayout={(e: LayoutChangeEvent) => this.onContentLayout(e)}
         style={{
           transform: [{ translateX: this._translateX }],
           zIndex: 2
@@ -255,11 +255,9 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
           style={[
             styles.hidden,
             {
-              height: this.state.hiddenHeight,
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between'
-            }
+              height: this.state.hiddenHeight
+            },
+            styles.wrapper
           ]}
         >
           <Left style={{ width: this.props.leftOpenValue, zIndex: 1 }}>{this.props.left}</Left>
@@ -271,7 +269,17 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
     );
   }
 }
-const styles = {
+
+const StyledSwipeRow = connectStyle('NativeBase.SwipeRow', {}, mapPropsToStyleNames)(SwipeRow);
+
+export { StyledSwipeRow as SwipeRow };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   container: {},
   hidden: {
     bottom: 0,
@@ -282,7 +290,4 @@ const styles = {
     top: 0
   },
   defaultBackgroundColor: { backgroundColor: '#FFF' }
-};
-const StyledSwipeRow = connectStyle('NativeBase.SwipeRow', {}, mapPropsToStyleNames)(SwipeRow);
-
-export { StyledSwipeRow as SwipeRow };
+});

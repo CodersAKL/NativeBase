@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { connectStyle } from 'native-base-shoutem-theme';
-import ReactNative, { ViewStyle, StyleProp, Animated } from 'react-native';
+import { ViewStyle, StyleProp, Animated } from 'react-native';
 
 import mapPropsToStyleNames from '../../utils/mapPropsToStyleNames';
 import variable from './../../theme/variables/platform';
@@ -9,8 +9,6 @@ import { TabHeading } from '../TabHeading';
 import { Text } from '../Text';
 import { TabContainer } from '../TabContainer';
 import { Button } from './Button';
-
-const { Animated } = ReactNative;
 
 interface ComponentProps {
   goToPage: () => void;

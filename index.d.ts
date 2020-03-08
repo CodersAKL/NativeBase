@@ -12568,7 +12568,7 @@ declare module 'native-base/basic/Drawer/index' {
 
 }
 declare module 'native-base/utils/mapPropsToStyleNames' {
-	 const mapPropsToStyleNames: (styleNames: any, props: any) => any;
+	 const mapPropsToStyleNames: (styleNames: string[], props: object) => string[];
 	export default mapPropsToStyleNames;
 
 }
@@ -12706,7 +12706,7 @@ declare module 'native-base/basic/Base/NativeBaseComponent' {
 	import { Component } from 'native-base/react'; type NativeBaseComponentProps = {
 	    theme?: object;
 	};
-	export default class NativeBaseComponent extends Component<NativeBaseComponentProps, {}> {
+	export default class NativeBaseComponent<P = {}, S = {}> extends Component<NativeBaseComponentProps & P, S> {
 	    getChildContext(): {
 	        theme: any;
 	    };
@@ -12930,6 +12930,75 @@ declare module 'native-base/basic/Tabs/DefaultTabBar' {
 	export { StyledTab as DefaultTabBar };
 
 }
+declare module 'native-base/basic/Tabs/index' {
+	import * as React from 'native-base/react';
+	import ReactNative, { StyleProp, ViewStyle } from 'react-native';
+	interface ComponentProps {
+	    tabBarPosition: 'top' | 'bottom' | 'overlayTop' | 'overlayBottom';
+	    initialPage: number;
+	    page: number;
+	    onChangeTab: () => void;
+	    onScroll: () => void;
+	    renderTabBar: any;
+	    style: StyleProp<ViewStyle>;
+	    contentProps: object;
+	    scrollWithoutAnimation: boolean;
+	    locked: boolean;
+	    prerenderingSiblingsNumber: number;
+	}
+	interface ComponentState {
+	    currentPage: number;
+	    sceneKeys: string[];
+	    containerWidth: number;
+	} class ScrollableTabView extends React.Component<ComponentProps, ComponentState> {
+	    scrollView: ReactNative.ScrollView | null;
+	    static defaultProps: {
+	        tabBarPosition: string;
+	        initialPage: number;
+	        page: number;
+	        onChangeTab: () => void;
+	        onScroll: () => void;
+	        contentProps: {};
+	        scrollWithoutAnimation: boolean;
+	        locked: boolean;
+	        prerenderingSiblingsNumber: number;
+	    };
+	    state: {
+	        currentPage: number;
+	        scrollValue: ReactNative.Animated.Value;
+	        containerWidth: number;
+	        sceneKeys: any[];
+	    };
+	    componentDidMount(): void;
+	    UNSAFE_componentWillReceiveProps(props: ComponentProps): void;
+	    goToPage(pageNumber: number): void;
+	    renderTabBar(props: any): JSX.Element | null;
+	    updateSceneKeys({ page, children, callback }: {
+	        page: any;
+	        children?: React.ReactNode;
+	        callback?: (() => void) | undefined;
+	    }): void;
+	    newSceneKeys({ previousKeys, currentPage, children }: {
+	        previousKeys?: never[] | undefined;
+	        currentPage?: number | undefined;
+	        children?: React.ReactNode;
+	    }): any[];
+	    _shouldRenderSceneKey(idx: number, currentPageKey: number): boolean;
+	    _keyExists(sceneKeys: any, key: any): any;
+	    _makeSceneKey(child: any, idx: any): string;
+	    renderScrollableContent(): JSX.Element;
+	    _composeScenes(): JSX.Element[];
+	    _onMomentumScrollBeginAndEnd(e: any): void;
+	    _updateSelectedPage(nextPage: any): void;
+	    _onChangeTab(prevPage: any, currentPage: any): void;
+	    _updateScrollValue(value: any): void;
+	    _handleLayout(e: any): void;
+	    private children;
+	    render(): JSX.Element;
+	}
+	export default ScrollableTabView;
+
+}
 declare module 'native-base/basic/Tabs/ScrollableTabBar' {
 	import React from 'native-base/react';
 	import { Animated, ViewStyle } from 'react-native';
@@ -12992,11 +13061,6 @@ declare module 'native-base/basic/Tabs/ScrollableTabBar' {
 	}
 	export const ScrollableTab: any;
 	export {};
-
-}
-declare module 'native-base/basic/Tabs/index' {
-	import React from 'native-base/react'; const ScrollableTabView: React.ClassicComponentClass<unknown>;
-	export default ScrollableTabView;
 
 }
 declare module 'native-base/basic/Subtitle' {

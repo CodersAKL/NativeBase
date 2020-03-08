@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ViewPropTypes } from 'react-native';
+import { View } from 'react-native';
 import { connectStyle } from 'native-base-shoutem-theme';
 
 import variables from '../theme/variables/platform';
@@ -31,11 +31,7 @@ class InputGroup extends Component<InputGroupProps, {}> {
     return computeProps(this.props, defaultProps);
   }
   render() {
-    return (
-      <View ref={c => (this._root = c)} {...this.prepareRootProps()}>
-        {this.props.children}
-      </View>
-    );
+    return <View {...this.prepareRootProps()}>{this.props.children}</View>;
   }
 }
 const StyledInputGroup = connectStyle('NativeBase.InputGroup', {}, mapPropsToStyleNames)(InputGroup);
