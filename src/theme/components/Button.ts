@@ -1,5 +1,3 @@
-// @flow
-
 import variable from './../variables/platform';
 import { PLATFORM } from './../variables/commonColor';
 

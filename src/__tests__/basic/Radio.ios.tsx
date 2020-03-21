@@ -9,8 +9,8 @@ import { Right } from '../../basic/Right';
 import { Text } from '../../basic/Text';
 import { Radio } from '../../basic/Radio';
 // Note: test renderer must be required after react-native.
-jest.mock('Platform', () => {
-  const Platform = require.requireActual('Platform');
+jest.mock('react-native/Libraries/Utilities/Platform', () => {
+  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
   Platform.OS = 'ios';
 

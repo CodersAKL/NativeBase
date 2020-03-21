@@ -4,8 +4,8 @@ import { create } from 'react-test-renderer';
 
 import { Badge } from '../../basic/Badge';
 // Note: test renderer must be required after react-native.
-jest.mock('Platform', () => {
-  const Platform = require.requireActual('Platform');
+jest.mock('react-native/Libraries/Utilities/Platform', () => {
+  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
   Platform.OS = 'ios';
 

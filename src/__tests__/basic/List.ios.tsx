@@ -20,8 +20,8 @@ import { Separator } from '../../basic/Separator';
 const pratik = require('../assets/pratik.png');
 const sanket = require('../assets/sanket.png');
 
-jest.mock('Platform', () => {
-  const Platform = require.requireActual('Platform');
+jest.mock('react-native/Libraries/Utilities/Platform', () => {
+  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
   Platform.OS = 'ios';
 

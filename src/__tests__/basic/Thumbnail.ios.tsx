@@ -8,8 +8,8 @@ import { Thumbnail } from '../../basic/Thumbnail';
 // Note: test renderer must be required after react-native.
 const cover = require('../assets/drawer-cover.png');
 
-jest.mock('Platform', () => {
-  const Platform = require.requireActual('Platform');
+jest.mock('react-native/Libraries/Utilities/Platform', () => {
+  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
   Platform.OS = 'ios';
 

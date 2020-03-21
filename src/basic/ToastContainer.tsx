@@ -40,7 +40,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
     }
   }
 
-  constructor(props) {
+  constructor(props: Readonly<{}>) {
     super(props);
     this.state = {
       fadeAnim: new Animated.Value(0),
@@ -77,7 +77,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
 
     return 0;
   }
-  getButtonText(buttonText) {
+  getButtonText(buttonText: string) {
     if (buttonText) {
       if (buttonText.trim().length === 0) {
         return undefined;
@@ -97,7 +97,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       isKeyboardVisible: false
     });
   }
-  keyboardDidShow(e) {
+  keyboardDidShow(e: { endCoordinates: { height: any; }; }) {
     this.setState({
       keyboardHeight: e.endCoordinates.height,
       isKeyboardVisible: true
@@ -133,7 +133,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       duration: 200
     }).start();
   }
-  closeModal(reason) {
+  closeModal(reason: any) {
     this.setState({
       modalVisible: false
     });
@@ -143,7 +143,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       onClose(reason);
     }
   }
-  closeToast(reason) {
+  closeToast(reason: string) {
     clearTimeout(this.closeTimeout);
     Animated.timing(this.state.fadeAnim, {
       toValue: 0,

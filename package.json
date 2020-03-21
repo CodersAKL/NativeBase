@@ -32,7 +32,7 @@
     "url": "https://opencollective.com/NativeBase"
   },
   "scripts": {
-    "test": "jest --noStackTrace --notify --detectOpenHandles",
+    "test": "jest --noStackTrace --notify --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "generate": "plop",
     "compile": "rimraf dist/* && tsc -p ./",
@@ -61,8 +61,8 @@
     "react-timer-mixin": "^0.13.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
@@ -71,6 +71,7 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.7",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
@@ -112,6 +113,7 @@
     "metro-react-native-babel-preset": "^0.58.0",
     "plop": "^2.5.3",
     "prettier": "^1.19.1",
+    "print-message": "^3.0.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "16.12.0",
     "react-to-typescript-definitions": "^2.0.0",
@@ -135,6 +137,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|@shoutem|react-clone-referenced-element|native-base-shoutem-theme)"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
