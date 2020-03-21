@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleProp, ViewStyle } from 'react-native';
+import { View, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 import { connectStyle } from 'native-base-shoutem-theme';
 
 import mapPropsToStyleNames from '../utils/mapPropsToStyleNames';
@@ -12,7 +12,7 @@ type RootProps = {
 class Root extends Component<RootProps, {}> {
   render() {
     return (
-      <View ref={c => (this._root = c)} {...this.props} style={{ flex: 1 }}>
+      <View {...this.props} style={styles.container}>
         {this.props.children}
         <Toast
           ref={c => {
@@ -31,3 +31,7 @@ class Root extends Component<RootProps, {}> {
 const StyledRoot = connectStyle('NativeBase.Root', {}, mapPropsToStyleNames)(Root);
 
 export { StyledRoot as Root };
+
+const styles = StyleSheet.create({
+  container: { flex: 1 }
+});

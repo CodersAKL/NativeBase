@@ -1,5 +1,14 @@
 import React from 'react';
-import { Animated, TouchableWithoutFeedback, FlatList, StyleSheet, View, ViewStyle, TextStyle } from 'react-native';
+import {
+  Animated,
+  TouchableWithoutFeedback,
+  FlatList,
+  StyleSheet,
+  View,
+  ViewStyle,
+  TextStyle,
+  StyleProp
+} from 'react-native';
 
 import variable from '../theme/variables/platform';
 import { Text } from './Text';
@@ -14,10 +23,10 @@ type AccordionState = {
 interface DefaultHeaderProps {
   expanded: boolean;
   expandedIcon: IconName;
-  expandedIconStyle;
-  headerStyle;
+  expandedIconStyle: StyleProp<ViewStyle>;
+  headerStyle: StyleProp<ViewStyle>;
   icon: IconName;
-  iconStyle;
+  iconStyle: StyleProp<ViewStyle>;
   title: string;
 }
 
@@ -97,16 +106,16 @@ interface AccordionItemProps {
   contentStyle: ViewStyle;
   expanded: boolean;
   expandedIcon: IconName;
-  expandedIconStyle;
-  headerStyle;
+  expandedIconStyle: any;
+  headerStyle: any;
   icon: IconName;
-  iconStyle;
-  index;
-  item;
-  onAccordionClose;
-  onAccordionOpen;
-  renderContent;
-  renderHeader;
+  iconStyle: any;
+  index: number;
+  item: any;
+  onAccordionClose: any;
+  onAccordionOpen: any;
+  renderContent: any;
+  renderHeader: any;
   setSelected: (i: number) => void;
 }
 
@@ -168,14 +177,30 @@ class AccordionItem extends React.Component<AccordionItemProps, {}> {
   }
 }
 
-export class Accordion extends React.Component<{}, AccordionState> {
-  constructor(props) {
+interface AccordionProps {
+  expanded: boolean;
+  contentStyle: any;
+  dataArray: any;
+  expandedIcon: IconName;
+  expandedIconStyle: any;
+  headerStyle: any;
+  icon: IconName;
+  iconStyle: any;
+  onAccordionClose: any;
+  onAccordionOpen: any;
+  renderContent: any;
+  renderHeader: any;
+  style: any;
+}
+
+export class Accordion extends React.Component<AccordionProps, AccordionState> {
+  constructor(props: Readonly<AccordionProps>) {
     super(props);
     this.state = {
       selected: props.expanded
     };
   }
-  setSelected(index) {
+  setSelected(index: number) {
     if (this.state.selected === index) {
       this.setState({ selected: undefined });
     } else {
