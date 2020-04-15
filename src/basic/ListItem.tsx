@@ -7,7 +7,7 @@ import {
   StyleProp,
   ViewStyle,
   TouchableWithoutFeedbackProps,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import { connectStyle } from 'native-base-shoutem-theme';
 
@@ -63,5 +63,5 @@ const StyledListItem = connectStyle('NativeBase.ListItem', {}, mapPropsToStyleNa
 export { StyledListItem as ListItem };
 
 const styles = StyleSheet.create({
-  container: { marginLeft: -17, paddingLeft: 17 }
+  container: { marginLeft: -17, paddingLeft: 17 },
 });

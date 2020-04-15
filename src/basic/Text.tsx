@@ -12,7 +12,7 @@ type TextProps = {
 class Text extends Component<TextProps, {}> {
   _root = createRef<RNText>();
   static defaultProps = {
-    uppercase: false
+    uppercase: false,
   };
   render() {
     const { uppercase, children } = this.props;

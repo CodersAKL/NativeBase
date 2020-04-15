@@ -271,7 +271,7 @@ it('renders Card Image', () => {
                   resizeMode: 'cover',
                   width: null,
                   height: 200,
-                  flex: 1
+                  flex: 1,
                 }}
                 source={cardImage}
               />
@@ -327,7 +327,7 @@ it('renders Card Showcase', () => {
                     height: 150,
                     resizeMode: 'cover',
                     width: deviceWidth / 1.18,
-                    marginVertical: 5
+                    marginVertical: 5,
                   }}
                   source={cardImage}
                 />

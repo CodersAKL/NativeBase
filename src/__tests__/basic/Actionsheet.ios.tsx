@@ -19,7 +19,7 @@ it('renders ActionSheet', () => {
               options: BUTTONS,
               cancelButtonIndex: CANCEL_INDEX,
               destructiveButtonIndex: DESTRUCTIVE_INDEX,
-              title: 'Select an option'
+              title: 'Select an option',
             },
             buttonIndex => {
               this.setState({ clicked: BUTTONS[buttonIndex] });

@@ -20,7 +20,7 @@ export default class PickerNB extends Component<{}, {}> {
 PickerNB.Item = createReactClass({
   render() {
     return <Picker.Item {...this.props} />;
-  }
+  },
 });
 const StyledPickerNB = connectStyle('NativeBase.PickerNB', {}, mapPropsToStyleNames)(PickerNB);
 

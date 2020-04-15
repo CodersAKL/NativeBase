@@ -116,7 +116,7 @@ const VueNativeBasePlugin = {
     Vue.component('nb-scrollable-tab', ScrollableTab);
     Vue.component('nb-subtitle', Subtitle);
     Vue.component('nb-accordion', Accordion);
-  }
+  },
 };
 
 export default VueNativeBasePlugin;

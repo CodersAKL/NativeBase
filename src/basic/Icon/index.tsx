@@ -22,7 +22,7 @@ type IconProps = {
 export class IconComponent extends Component<IconProps, {}> {
   _root = createRef<typeof IconNB>();
   static contextTypes = {
-    theme: object
+    theme: object,
   };
   getName() {
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;

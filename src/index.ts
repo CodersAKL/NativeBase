@@ -123,7 +123,7 @@ export {
   Root,
   SwipeRow,
   VueNativeBase,
-  Accordion
+  Accordion,
 };
 
 const mapPropsToStyleNames = (_styleNames: any, props: any) => keys(props);

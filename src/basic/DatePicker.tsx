@@ -8,7 +8,7 @@ import {
   DatePickerAndroidOpenOptions,
   ModalBaseProps,
   TextStyle,
-  DatePickerIOSProps
+  DatePickerIOSProps,
 } from 'react-native';
 
 import variable from '../theme/variables/platform';
@@ -42,7 +42,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
     this.state = {
       modalVisible: false,
       defaultDate: props.defaultDate ? props.defaultDate : new Date(),
-      chosenDate: !props.placeHolderText && props.defaultDate ? props.defaultDate : undefined
+      chosenDate: !props.placeHolderText && props.defaultDate ? props.defaultDate : undefined,
     };
   }
 
@@ -65,7 +65,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
         date: this.state.chosenDate ? this.state.chosenDate : this.state.defaultDate,
         minDate: this.props.minimumDate,
         maxDate: this.props.maximumDate,
-        mode: this.props.androidMode
+        mode: this.props.androidMode,
       });
 
       if (newDate.action === 'dateSetAction') {
@@ -97,7 +97,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
       placeHolderText,
       placeHolderTextStyle,
       textStyle,
-      timeZoneOffsetInMinutes
+      timeZoneOffsetInMinutes,
     } = this.props;
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;
 
@@ -109,9 +109,9 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
             style={[
               {
                 padding: variables.datePickerPadding,
-                color: variables.datePickerTextColor
+                color: variables.datePickerTextColor,
               },
-              this.state.chosenDate ? textStyle : placeHolderTextStyle
+              this.state.chosenDate ? textStyle : placeHolderTextStyle,
             ]}
           >
             {this.state.chosenDate ? this.formatChosenDate(this.state.chosenDate) : placeHolderText || 'Select Date'}
@@ -128,7 +128,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
                 onPress={() => this.setState({ modalVisible: false })}
                 style={{
                   backgroundColor: variables.datePickerBg,
-                  flex: variables.datePickerFlex
+                  flex: variables.datePickerFlex,
                 }}
               />
               <DatePickerIOS

@@ -32,13 +32,13 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
     this.state = {
       modalVisible: false,
       currentLabel: this.getLabel(props),
-      dataSource: this.getChildren(props.children)
+      dataSource: this.getChildren(props.children),
     };
   }
   getInitialStyle = () => {
     return {
       picker: {},
-      pickerItem: {}
+      pickerItem: {},
     };
   };
   getLabel(props) {
@@ -62,7 +62,7 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
   prepareRootProps() {
     const defaultProps = {
       style: this.getInitialStyle().picker,
-      itemStyle: this.getInitialStyle().pickerItem
+      itemStyle: this.getInitialStyle().pickerItem,
     };
 
     return computeProps(this.props, defaultProps);
@@ -75,10 +75,10 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
       style: [
         {
           fontSize: 22,
-          lineHeight: 26
+          lineHeight: 26,
         },
-        { ...this.props.iosIcon.props.style }
-      ]
+        { ...this.props.iosIcon.props.style },
+      ],
     });
   }
   renderButton() {
@@ -93,7 +93,7 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
         onPress,
         text,
         picker: this,
-        selectedItem: this.getSelectedItem()
+        selectedItem: this.getSelectedItem(),
       });
     }
 
@@ -130,7 +130,7 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
               shadowRadius: null,
               shadowOpacity: null,
               marginLeft: 3,
-              ...this.props.headerBackButtonStyle
+              ...this.props.headerBackButtonStyle,
             }}
             transparent
             onPress={() => {
@@ -156,12 +156,12 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
 
     if (currentLabel !== nextLabel) {
       this.setState({
-        currentLabel: nextLabel
+        currentLabel: nextLabel,
       });
     }
     if (currentDS !== nextDS) {
       this.setState({
-        dataSource: nextDS
+        dataSource: nextDS,
       });
     }
   }
@@ -215,7 +215,7 @@ class PickerNB extends Component<PickerNBProps, PickerNBState> {
 PickerNB.Item = createReactClass({
   render() {
     return <Picker.Item {...this.props()} />;
-  }
+  },
 });
 const StyledPickerNB = connectStyle('NativeBase.PickerNB', {}, mapPropsToStyleNames)(PickerNB);
 

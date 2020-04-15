@@ -25,15 +25,15 @@ class Gravatar extends NativeBaseComponent<GravatarProps, {}> {
         borderRadius: this.props.size ? this.props.size / 2 : 15,
         width: this.props.size ? this.props.size : 30,
         height: this.props.size ? this.props.size : 30,
-        resizeMode: this.props.contain ? 'contain' : undefined
-      }
+        resizeMode: this.props.contain ? 'contain' : undefined,
+      },
     };
   }
   prepareRootProps = () => {
     const gravatarStyle = {
       width: this.props.size,
       height: this.props.size,
-      borderRadius: 0
+      borderRadius: 0,
     };
 
     if (this.props.circular) {
@@ -42,7 +42,7 @@ class Gravatar extends NativeBaseComponent<GravatarProps, {}> {
       gravatarStyle.borderRadius = this.props.size / 2;
     }
     const defaultProps = {
-      style: _.merge(this.getInitialStyle().gravatar, gravatarStyle)
+      style: _.merge(this.getInitialStyle().gravatar, gravatarStyle),
     };
 
     return computeProps(this.props, defaultProps);

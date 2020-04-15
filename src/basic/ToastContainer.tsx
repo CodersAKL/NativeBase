@@ -10,7 +10,7 @@ import { Toast } from './Toast';
 const POSITION = {
   ABSOLUTE: 'absolute',
   BOTTOM: 'bottom',
-  TOP: 'top'
+  TOP: 'top',
 };
 
 type ToastContainerState = {
@@ -46,7 +46,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       fadeAnim: new Animated.Value(0),
       keyboardHeight: 0,
       isKeyboardVisible: false,
-      modalVisible: false
+      modalVisible: false,
     };
     this.keyboardDidHide = this.keyboardDidHide.bind(this);
     this.keyboardDidShow = this.keyboardDidShow.bind(this);
@@ -63,7 +63,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       elevation: 9,
       paddingHorizontal: Platform.OS === PLATFORM.IOS ? 20 : 0,
       top: this.state.position === POSITION.TOP ? 30 : undefined,
-      bottom: this.state.position === POSITION.BOTTOM ? this.getTop() : undefined
+      bottom: this.state.position === POSITION.BOTTOM ? this.getTop() : undefined,
     };
   }
   getTop() {
@@ -94,13 +94,13 @@ class ToastContainer extends Component<{}, ToastContainerState> {
   keyboardDidHide() {
     this.setState({
       keyboardHeight: 0,
-      isKeyboardVisible: false
+      isKeyboardVisible: false,
     });
   }
-  keyboardDidShow(e: { endCoordinates: { height: any; }; }) {
+  keyboardDidShow(e: { endCoordinates: { height: any } }) {
     this.setState({
       keyboardHeight: e.endCoordinates.height,
-      isKeyboardVisible: true
+      isKeyboardVisible: true,
     });
   }
   showToast({ config }) {
@@ -115,7 +115,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
       buttonTextStyle: config.buttonTextStyle,
       buttonStyle: config.buttonStyle,
       textStyle: config.textStyle,
-      onClose: config.onClose
+      onClose: config.onClose,
     });
     // If we have a toast already open, cut off its close timeout so that it won't affect *this* toast.
     if (this.closeTimeout) {
@@ -130,12 +130,12 @@ class ToastContainer extends Component<{}, ToastContainerState> {
     // Fade the toast in now.
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
-      duration: 200
+      duration: 200,
     }).start();
   }
   closeModal(reason: any) {
     this.setState({
-      modalVisible: false
+      modalVisible: false,
     });
     const { onClose } = this.state;
 
@@ -147,7 +147,7 @@ class ToastContainer extends Component<{}, ToastContainerState> {
     clearTimeout(this.closeTimeout);
     Animated.timing(this.state.fadeAnim, {
       toValue: 0,
-      duration: 200
+      duration: 200,
     }).start(this.closeModal.bind(this, reason));
   }
   render() {

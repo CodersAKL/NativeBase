@@ -35,7 +35,7 @@ class Item extends Component<ItemProps, ItemState> {
       isFocused: false,
       text: '',
       topAnim: new Animated.Value(18),
-      opacAnim: new Animated.Value(1)
+      opacAnim: new Animated.Value(1),
     };
   }
   componentDidMount() {
@@ -81,8 +81,8 @@ class Item extends Component<ItemProps, ItemState> {
     return {
       roundedInputGroup: {
         borderWidth: this.props.rounded ? variables.borderWidth * 2 : undefined,
-        borderRadius: this.props.rounded ? variables.inputGroupRoundedBorderRadius : undefined
-      }
+        borderRadius: this.props.rounded ? variables.inputGroupRoundedBorderRadius : undefined,
+      },
     };
   }
   getPlacholderValue(inputProps) {
@@ -99,26 +99,26 @@ class Item extends Component<ItemProps, ItemState> {
   floatBack(e) {
     Animated.timing(this.state.topAnim, {
       toValue: e || 18,
-      duration: 150
+      duration: 150,
     }).start();
     Animated.timing(this.state.opacAnim, {
       toValue: 1,
-      duration: 150
+      duration: 150,
     }).start();
   }
   floatUp(e) {
     Animated.timing(this.state.topAnim, {
       toValue: e || -22,
-      duration: 150
+      duration: 150,
     }).start();
     Animated.timing(this.state.opacAnim, {
       toValue: 0.7,
-      duration: 150
+      duration: 150,
     }).start();
   }
   prepareRootProps() {
     const defaultProps = {
-      style: this.getInitialStyle().roundedInputGroup
+      style: this.getInitialStyle().roundedInputGroup,
     };
 
     return computeProps(this.props, defaultProps);
@@ -192,7 +192,7 @@ class Item extends Component<ItemProps, ItemState> {
                 top: this.state.topAnim,
                 opacity: this.state.opacAnim,
                 paddingTop: Platform.OS === 'ios' ? undefined : undefined,
-                paddingBottom: Platform.OS === 'ios' ? undefined : 12
+                paddingBottom: Platform.OS === 'ios' ? undefined : 12,
               }}
             >
               <Label {...labelProps}>{this.renderLabel(label, labelProps)}</Label>
@@ -213,7 +213,7 @@ class Item extends Component<ItemProps, ItemState> {
               onBlur={e => {
                 if (inputProps.value) {
                   this.setState({
-                    isFocused: true
+                    isFocused: true,
                   });
                 } else if (!this.state.text.length) {
                   this.setState({ isFocused: false });
@@ -245,7 +245,7 @@ class Item extends Component<ItemProps, ItemState> {
               {...this.props.children[i].props}
               style={{
                 right: 10,
-                left: i === this.props.children.length - 1 ? undefined : 0
+                left: i === this.props.children.length - 1 ? undefined : 0,
               }}
             />
           );
@@ -261,7 +261,7 @@ class Item extends Component<ItemProps, ItemState> {
                 top: this.state.topAnim,
                 opacity: this.state.opacAnim,
                 paddingTop: Platform.OS === 'ios' ? undefined : undefined,
-                paddingBottom: Platform.OS === 'ios' ? undefined : 12
+                paddingBottom: Platform.OS === 'ios' ? undefined : 12,
               }}
             >
               <Label {...labelProps}>{this.renderLabel(label, labelProps)}</Label>
@@ -289,7 +289,7 @@ class Item extends Component<ItemProps, ItemState> {
               }}
               style={{
                 left: this.props.last && isImage ? 10 : this.props.last ? 4 : isImage ? 10 : 0,
-                marginRight: 12
+                marginRight: 12,
               }}
             />
           );
@@ -306,7 +306,7 @@ class Item extends Component<ItemProps, ItemState> {
             top: this.state.topAnim,
             opacity: this.state.opacAnim,
             paddingTop: Platform.OS === 'ios' ? undefined : undefined,
-            paddingBottom: Platform.OS === 'ios' ? undefined : 12
+            paddingBottom: Platform.OS === 'ios' ? undefined : 12,
           }}
         >
           <Label {...labelProps}>{this.renderLabel(label, labelProps)}</Label>
@@ -342,7 +342,7 @@ class Item extends Component<ItemProps, ItemState> {
           style={{
             flexDirection: 'row',
             flex: 1,
-            width: variables.deviceWidth - 15
+            width: variables.deviceWidth - 15,
           }}
         >
           <Icon key="s1" {...iconProps} />
@@ -369,7 +369,7 @@ class Item extends Component<ItemProps, ItemState> {
             ...labelProps,
             key: 'newFLabel',
             float: true,
-            style: labelStyle
+            style: labelStyle,
           })
         );
         this.floatUp(-16);
@@ -381,7 +381,7 @@ class Item extends Component<ItemProps, ItemState> {
       newLabel.push(
         React.createElement(Label, {
           ...labelProps,
-          key: 'newLabel'
+          key: 'newLabel',
         })
       );
     }

@@ -19,13 +19,13 @@ class InputGroup extends Component<InputGroupProps, {}> {
     return {
       roundedInputGroup: {
         borderWidth: this.props.rounded ? 1 : undefined,
-        borderRadius: this.props.rounded ? variables.inputGroupRoundedBorderRadius : undefined
-      }
+        borderRadius: this.props.rounded ? variables.inputGroupRoundedBorderRadius : undefined,
+      },
     };
   }
   prepareRootProps() {
     const defaultProps = {
-      style: this.getInitialStyle().roundedInputGroup
+      style: this.getInitialStyle().roundedInputGroup,
     };
 
     return computeProps(this.props, defaultProps);

@@ -5,7 +5,8 @@ exports[`renders Header and Content Style Accordion 1`] = `
   style={Object {}}
 >
   <View>
-    <View
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
       style={
         Object {
           "backgroundColor": undefined,
@@ -15,9 +16,10 @@ exports[`renders Header and Content Style Accordion 1`] = `
       <View
         style={Object {}}
       />
-    </View>
+    </RCTSafeAreaView>
   </View>
-  <View
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
     style={
       Object {
         "backgroundColor": undefined,
@@ -127,7 +129,6 @@ exports[`renders Header and Content Style Accordion 1`] = `
           initialNumToRender={10}
           keyExtractor={[Function]}
           maxToRenderPerBatch={10}
-          numColumns={1}
           onContentSizeChange={[Function]}
           onEndReachedThreshold={2}
           onLayout={[Function]}
@@ -135,7 +136,7 @@ exports[`renders Header and Content Style Accordion 1`] = `
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
           onScrollEndDrag={[Function]}
-          removeClippedSubviews={true}
+          removeClippedSubviews={false}
           renderItem={[Function]}
           scrollEventThrottle={50}
           stickyHeaderIndices={Array []}
@@ -370,7 +371,7 @@ exports[`renders Header and Content Style Accordion 1`] = `
         </RCTScrollView>
       </View>
     </RCTScrollView>
-  </View>
+  </RCTSafeAreaView>
 </View>
 `;
 
@@ -379,7 +380,8 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
   style={Object {}}
 >
   <View>
-    <View
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
       style={
         Object {
           "backgroundColor": undefined,
@@ -389,9 +391,10 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
       <View
         style={Object {}}
       />
-    </View>
+    </RCTSafeAreaView>
   </View>
-  <View
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
     style={
       Object {
         "backgroundColor": undefined,
@@ -493,7 +496,6 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
           initialNumToRender={10}
           keyExtractor={[Function]}
           maxToRenderPerBatch={10}
-          numColumns={1}
           onContentSizeChange={[Function]}
           onEndReachedThreshold={2}
           onLayout={[Function]}
@@ -501,7 +503,7 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
           onScrollEndDrag={[Function]}
-          removeClippedSubviews={true}
+          removeClippedSubviews={false}
           renderItem={[Function]}
           scrollEventThrottle={50}
           stickyHeaderIndices={Array []}
@@ -584,7 +586,7 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -655,7 +657,7 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -726,7 +728,7 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -736,7 +738,7 @@ exports[`renders Icon and Expanded Icon Accordion 1`] = `
         </RCTScrollView>
       </View>
     </RCTScrollView>
-  </View>
+  </RCTSafeAreaView>
 </View>
 `;
 
@@ -745,7 +747,8 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
   style={Object {}}
 >
   <View>
-    <View
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
       style={
         Object {
           "backgroundColor": undefined,
@@ -755,9 +758,10 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
       <View
         style={Object {}}
       />
-    </View>
+    </RCTSafeAreaView>
   </View>
-  <View
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
     style={
       Object {
         "backgroundColor": undefined,
@@ -869,7 +873,6 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
           initialNumToRender={10}
           keyExtractor={[Function]}
           maxToRenderPerBatch={10}
-          numColumns={1}
           onContentSizeChange={[Function]}
           onEndReachedThreshold={2}
           onLayout={[Function]}
@@ -877,7 +880,7 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
           onScrollEndDrag={[Function]}
-          removeClippedSubviews={true}
+          removeClippedSubviews={false}
           renderItem={[Function]}
           scrollEventThrottle={50}
           stickyHeaderIndices={Array []}
@@ -960,7 +963,7 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -1031,7 +1034,7 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -1102,7 +1105,7 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
                 </View>
@@ -1112,7 +1115,7 @@ exports[`renders Icon and Expanded Icon Style Accordion 1`] = `
         </RCTScrollView>
       </View>
     </RCTScrollView>
-  </View>
+  </RCTSafeAreaView>
 </View>
 `;
 
@@ -1121,7 +1124,8 @@ exports[`renders Regular Accordion 1`] = `
   style={Object {}}
 >
   <View>
-    <View
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
       style={
         Object {
           "backgroundColor": undefined,
@@ -1131,9 +1135,10 @@ exports[`renders Regular Accordion 1`] = `
       <View
         style={Object {}}
       />
-    </View>
+    </RCTSafeAreaView>
   </View>
-  <View
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
     style={
       Object {
         "backgroundColor": undefined,
@@ -1222,10 +1227,10 @@ exports[`renders Regular Accordion 1`] = `
             ]
           }
           disableVirtualization={false}
-          expanded={0}
+          expanded={true}
           extraData={
             Object {
-              "selected": 0,
+              "selected": true,
             }
           }
           getItem={[Function]}
@@ -1234,7 +1239,6 @@ exports[`renders Regular Accordion 1`] = `
           initialNumToRender={10}
           keyExtractor={[Function]}
           maxToRenderPerBatch={10}
-          numColumns={1}
           onContentSizeChange={[Function]}
           onEndReachedThreshold={2}
           onLayout={[Function]}
@@ -1242,7 +1246,7 @@ exports[`renders Regular Accordion 1`] = `
           onScroll={[Function]}
           onScrollBeginDrag={[Function]}
           onScrollEndDrag={[Function]}
-          removeClippedSubviews={true}
+          removeClippedSubviews={false}
           renderItem={[Function]}
           scrollEventThrottle={50}
           stickyHeaderIndices={Array []}
@@ -1325,33 +1329,9 @@ exports[`renders Regular Accordion 1`] = `
                         ]
                       }
                     >
-                      
+                      
                     </Text>
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "opacity": 0.3,
-                    }
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {},
-                        Object {
-                          "padding": 10,
-                        },
-                        Object {
-                          "backgroundColor": "#f5f4f5",
-                        },
-                      ]
-                    }
-                    uppercase={false}
-                  >
-                    Lorem ipsum dolor sit amet
-                  </Text>
                 </View>
               </View>
             </View>
@@ -1501,6 +1481,6 @@ exports[`renders Regular Accordion 1`] = `
         </RCTScrollView>
       </View>
     </RCTScrollView>
-  </View>
+  </RCTSafeAreaView>
 </View>
 `;

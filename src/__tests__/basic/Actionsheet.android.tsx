@@ -13,7 +13,7 @@ var ICON_BUTTONS = [
   { text: 'Option 1', icon: 'analytics', iconColor: '#f42ced' },
   { text: 'Option 2', icon: 'aperture', iconColor: '#ea943b' },
   { text: 'Delete', icon: 'trash', iconColor: '#fa213b' },
-  { text: 'Cancel', icon: 'close', iconColor: '#25de5b' }
+  { text: 'Cancel', icon: 'close', iconColor: '#25de5b' },
 ];
 
 it('renders Regular ActionSheet', () => {
@@ -26,7 +26,7 @@ it('renders Regular ActionSheet', () => {
               options: REGULAR_BUTTONS,
               cancelButtonIndex: CANCEL_INDEX,
               destructiveButtonIndex: DESTRUCTIVE_INDEX,
-              title: 'Select an option'
+              title: 'Select an option',
             },
             buttonIndex => {
               this.setState({ clicked: REGULAR_BUTTONS[buttonIndex] });
@@ -51,7 +51,7 @@ it('renders Icon ActionSheet', () => {
               options: ICON_BUTTONS,
               cancelButtonIndex: CANCEL_INDEX,
               destructiveButtonIndex: DESTRUCTIVE_INDEX,
-              title: 'Select an option'
+              title: 'Select an option',
             },
             buttonIndex => {
               this.setState({ clicked: ICON_BUTTONS[buttonIndex] });

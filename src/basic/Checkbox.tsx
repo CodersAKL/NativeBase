@@ -22,13 +22,13 @@ class CheckBox extends Component<CheckBoxProps, {}> {
     return {
       checkStyle: {
         borderColor: color || variables.checkboxBgColor,
-        backgroundColor: checked === true ? color || variables.checkboxBgColor : variables.checkboxDefaultColor
-      }
+        backgroundColor: checked === true ? color || variables.checkboxBgColor : variables.checkboxDefaultColor,
+      },
     };
   }
   prepareRootProps(variables: SimpleObject) {
     const defaultProps = {
-      style: this.getInitialStyle(variables).checkStyle
+      style: this.getInitialStyle(variables).checkStyle,
     };
 
     return computeProps(this.props, defaultProps);
@@ -47,7 +47,7 @@ class CheckBox extends Component<CheckBoxProps, {}> {
             fontSize: variables.CheckboxFontSize,
             lineHeight: variables.CheckboxIconSize,
             marginTop: variables.CheckboxIconMarginTop,
-            textShadowRadius: variables.checkboxTextShadowRadius
+            textShadowRadius: variables.checkboxTextShadowRadius,
           }}
           name={platform === PLATFORM.IOS && platformStyle !== PLATFORM.MATERIAL ? 'ios-checkmark' : 'md-checkmark'}
         />

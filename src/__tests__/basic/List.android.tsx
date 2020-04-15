@@ -28,7 +28,7 @@ it('renders Basic List', () => {
     'Alberto Moreno',
     'Emre Can',
     'Joe Allen',
-    'Phil Coutinho'
+    'Phil Coutinho',
   ];
   const tree = renderer
     .create(
@@ -235,13 +235,13 @@ it('renders ListItem avatar', () => {
     {
       img: pratik,
       text: 'Kumar Pratik',
-      note: 'Its time to build a difference . .'
+      note: 'Its time to build a difference . .',
     },
     {
       img: sanket,
       text: 'Kumar Sanket',
-      note: 'One needs courage to be happy and smiling all time . . '
-    }
+      note: 'One needs courage to be happy and smiling all time . . ',
+    },
   ];
   const tree = renderer
     .create(
@@ -276,13 +276,13 @@ it('renders ListItem thumbnail', () => {
     {
       img: pratik,
       text: 'Kumar Pratik',
-      note: 'Its time to build a difference . .'
+      note: 'Its time to build a difference . .',
     },
     {
       img: sanket,
       text: 'Kumar Sanket',
-      note: 'One needs courage to be happy and smiling all time . . '
-    }
+      note: 'One needs courage to be happy and smiling all time . . ',
+    },
   ];
   const tree = renderer
     .create(
@@ -354,7 +354,7 @@ it('renders ListItem noIndent', () => {
         <ListItem
           noIndent
           style={{
-            backgroundColor: '#cde1f9'
+            backgroundColor: '#cde1f9',
           }}
         >
           <Text>Caroline Aaron</Text>

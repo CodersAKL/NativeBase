@@ -23,11 +23,11 @@ class Content extends Component<ContentProps, {}> {
       disableKBDismissScroll,
       keyboardShouldPersistTaps,
       padder,
-      style
+      style,
     } = this.props;
     const containerStyle = {
       flex: 1,
-      backgroundColor: getStyle(style).backgroundColor
+      backgroundColor: getStyle(style).backgroundColor,
     };
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;
 

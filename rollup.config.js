@@ -27,14 +27,14 @@ export default {
       dir: path.dirname(pkg.main),
       format: 'cjs',
       exports: 'named',
-      sourcemap: true
+      sourcemap: true,
     },
     {
       dir: path.dirname(pkg.module),
       format: 'es',
       exports: 'named',
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
   external,
   acornInjectPlugins: [jsx({ allowNamespaces: false })],
@@ -46,7 +46,7 @@ export default {
       module: false,
       jsnext: true,
       browser: true,
-      extensions
+      extensions,
     }),
     // flow(),
     // typescript({
@@ -61,11 +61,11 @@ export default {
       clean: true,
       abortOnError: false,
       exclude: ['node_modules/**', '**/__tests__/**'],
-      extensions
+      extensions,
     }),
     // typescript({ module: 'CommonJS', noEmitOnError: false }),
     babel({
-      ...bCfg
+      ...bCfg,
     }),
     commonjs({
       include: ['node_modules/**'],
@@ -73,8 +73,8 @@ export default {
       namedExports: {
         'node_modules/react/react.js': ['Children', 'Component', 'PropTypes', 'createElement'],
         'node_modules/react-dom/index.js': ['render'],
-        extensions
-      }
-    })
-  ]
+        extensions,
+      },
+    }),
+  ],
 };

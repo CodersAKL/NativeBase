@@ -14,7 +14,7 @@ type RadioProps = {
 class Radio extends Component<RadioProps, {}> {
   prepareRootProps() {
     const defaultProps = {
-      standardStyle: false
+      standardStyle: false,
     };
 
     return computeProps(this.props, defaultProps);
@@ -31,7 +31,7 @@ class Radio extends Component<RadioProps, {}> {
                 color: this.props.selectedColor ? this.props.selectedColor : variables.radioColor,
                 lineHeight: 25,
                 height: 20,
-                fontSize: variables.radioBtnSize
+                fontSize: variables.radioBtnSize,
               }}
               name="ios-checkmark"
             />
@@ -56,7 +56,7 @@ class Radio extends Component<RadioProps, {}> {
                   ? this.props.color
                   : undefined,
               lineHeight: variables.radioBtnLineHeight,
-              fontSize: variables.radioBtnSize
+              fontSize: variables.radioBtnSize,
             }}
             name={
               Platform.OS === 'ios'

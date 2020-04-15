@@ -52,7 +52,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       fadeAnim: new Animated.Value(0.8),
       looping: typeof this.props.looping === 'undefined' ? true : this.props.looping,
       disabled: this.props.dataSource.length === 0,
-      lastCard: this.props.dataSource.length === 1
+      lastCard: this.props.dataSource.length === 1,
     };
     this.setPanResponder();
   }
@@ -64,7 +64,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
           selectedItem: dataSource[0],
           selectedItem2: undefined,
           disabled: dataSource.length === 0,
-          lastCard: dataSource.length === 1
+          lastCard: dataSource.length === 1,
         });
 
         return;
@@ -75,7 +75,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
 
       this.setState({
         selectedItem: dataSource[currentIndex],
-        selectedItem2: dataSource[nextIndex]
+        selectedItem2: dataSource[nextIndex],
       });
     }
   }
@@ -85,8 +85,8 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
         position: 'absolute',
         top: 0,
         right: 0,
-        left: 0
-      }
+        left: 0,
+      },
     };
   };
   getCardStyles() {
@@ -95,16 +95,16 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
     // let [translateX, translateY] = [pan2.x, pan2.y];
     const rotate = pan.x.interpolate({
       inputRange: [-700, 0, 700],
-      outputRange: ['-10deg', '0deg', '10deg']
+      outputRange: ['-10deg', '0deg', '10deg'],
     });
     const opacity = pan.x.interpolate({
       inputRange: [-320, 0, 320],
-      outputRange: [0.9, 1, 0.9]
+      outputRange: [0.9, 1, 0.9],
     });
     const scale = enter;
     const animatedCardStyles = {
       transform: [{ translateX }, { translateY }, { rotate }],
-      opacity
+      opacity,
     };
     const animatedCardStyles2 = { transform: [{ scale }] };
 
@@ -116,7 +116,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       onPanResponderGrant: () => {
         this.state.pan.setOffset({
           x: this.state.pan.x._value,
-          y: this.state.pan.y._value
+          y: this.state.pan.y._value,
         });
         this.state.pan.setValue({ x: 0, y: 0 });
       },
@@ -134,7 +134,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
         Animated.timing(this.state.fadeAnim, { toValue: 0.8 + val }).start();
         Animated.spring(this.state.enter, {
           toValue: 0.8 + val,
-          friction: 7
+          friction: 7,
         }).start();
         Animated.event([null, { dx: this.state.pan.x }])(e, gestureState);
       },
@@ -157,15 +157,15 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
           }
           Animated.decay(this.state.pan, {
             velocity: { x: velocity, y: vy },
-            deceleration: 0.98
+            deceleration: 0.98,
           }).start(this._resetState.bind(this));
         } else {
           Animated.spring(this.state.pan, {
             toValue: { x: 0, y: 0 },
-            friction: 4
+            friction: 4,
           }).start();
         }
-      }
+      },
     });
   }
   _resetState() {
@@ -174,7 +174,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
     this.state.fadeAnim.setValue(0.8);
     this.setState({
       card1Top: !this.state.card1Top,
-      card2Top: !this.state.card2Top
+      card2Top: !this.state.card2Top,
     });
     if (this.props.onSwiping) this.props.onSwiping(null);
   }
@@ -186,7 +186,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       this.selectNext();
       Animated.decay(this.state.pan, {
         velocity: { x: 8, y: 1 },
-        deceleration: 0.98
+        deceleration: 0.98,
       }).start(this._resetState.bind(this));
     }, 300);
   }
@@ -198,7 +198,7 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       this.selectNext();
       Animated.decay(this.state.pan, {
         velocity: { x: -8, y: 1 },
-        deceleration: 0.98
+        deceleration: 0.98,
       }).start(this._resetState.bind(this));
     }, 300);
   }
@@ -211,17 +211,17 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
       // reached end -> only display static renderEmpty() -> no swiping
       if (currentIndex === dataSource.length - 1) {
         return this.setState({
-          disabled: true
+          disabled: true,
         });
       } else if (currentIndex === dataSource.length - 2) {
         // show last card with renderEmpty() component behind it
         return setTimeout(() => {
           this.setState({
-            selectedItem: dataSource[currentIndex + 1]
+            selectedItem: dataSource[currentIndex + 1],
           });
           setTimeout(() => {
             this.setState({
-              lastCard: true
+              lastCard: true,
             });
           }, 350);
         }, 50);
@@ -231,11 +231,11 @@ class DeckSwiper extends Component<DeckSwiperProps, DeckSwiperState> {
 
     setTimeout(() => {
       this.setState({
-        selectedItem: this.props.dataSource[nextIndexes[0]]
+        selectedItem: this.props.dataSource[nextIndexes[0]],
       });
       setTimeout(() => {
         this.setState({
-          selectedItem2: this.props.dataSource[nextIndexes[1]]
+          selectedItem2: this.props.dataSource[nextIndexes[1]],
         });
       }, 350);
     }, 50);
@@ -317,5 +317,5 @@ const StyledDeckSwiper = connectStyle('NativeBase.DeckSwiper', {}, mapPropsToSty
 export { StyledDeckSwiper as DeckSwiper };
 
 const styles = StyleSheet.create({
-  wrapper: { position: 'relative', flexDirection: 'column' }
+  wrapper: { position: 'relative', flexDirection: 'column' },
 });

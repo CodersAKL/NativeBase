@@ -33,5 +33,5 @@ const StyledRoot = connectStyle('NativeBase.Root', {}, mapPropsToStyleNames)(Roo
 export { StyledRoot as Root };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 }
+  container: { flex: 1 },
 });

@@ -6,7 +6,7 @@ import {
   TouchableNativeFeedback,
   StyleSheet,
   TextStyle,
-  StyleProp
+  StyleProp,
 } from 'react-native';
 import { connectStyle } from 'native-base-shoutem-theme';
 
@@ -40,13 +40,13 @@ class Button extends Component<ButtonProps, {}> {
       borderedBtn: {
         borderWidth: this.props.bordered ? variable.buttonDefaultBorderWidth : undefined,
         borderRadius:
-          this.props.rounded && this.props.bordered ? variable.borderRadiusLarge : variable.buttonDefaultBorderRadius
-      }
+          this.props.rounded && this.props.bordered ? variable.borderRadiusLarge : variable.buttonDefaultBorderRadius,
+      },
     };
   }
   prepareRootProps() {
     const defaultProps = {
-      style: this.getInitialStyle().borderedBtn
+      style: this.getInitialStyle().borderedBtn,
     };
 
     const flattenedStyle = StyleSheet.flatten([defaultProps.style, this.props.style]);
@@ -66,7 +66,7 @@ class Button extends Component<ButtonProps, {}> {
             child && child.type === Text
               ? React.cloneElement(child, {
                   uppercase: variables.buttonUppercaseAndroidText,
-                  ...child.props
+                  ...child.props,
                 })
               : child
           );
@@ -111,8 +111,8 @@ class Button extends Component<ButtonProps, {}> {
                   paddingTop: buttonStyle.paddingTop,
                   paddingBottom: buttonStyle.paddingBottom,
                   height: buttonStyle.height,
-                  flexGrow: buttonFlex
-                }
+                  flexGrow: buttonFlex,
+                },
               ]}
             >
               {children}
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 const StyledButton = connectStyle('NativeBase.Button', {}, mapPropsToStyleNames)(Button);
 

@@ -16,13 +16,13 @@ class Textarea extends Component<TextareaProps, {}> {
   getStyle() {
     return {
       textarea: {
-        height: this.props.rowSpan ? this.props.rowSpan * 25 : 60
-      }
+        height: this.props.rowSpan ? this.props.rowSpan * 25 : 60,
+      },
     };
   }
   prepareRootProps() {
     const defaultProps = {
-      style: this.getStyle().textarea
+      style: this.getStyle().textarea,
     };
 
     return computeProps(this.props, defaultProps);

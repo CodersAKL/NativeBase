@@ -9,7 +9,7 @@ import { Accordion } from '../../basic/Accordion';
 const dataArray = [
   { title: 'First Element', content: 'Lorem ipsum dolor sit amet' },
   { title: 'Second Element', content: 'Lorem ipsum dolor sit amet' },
-  { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' }
+  { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' },
 ];
 
 it('renders Regular Accordion', () => {
@@ -17,7 +17,7 @@ it('renders Regular Accordion', () => {
     <Container>
       <Header />
       <Content padder>
-        <Accordion dataArray={dataArray} expanded={0} />
+        <Accordion dataArray={dataArray} expanded />
       </Content>
     </Container>
   ).toJSON();

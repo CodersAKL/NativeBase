@@ -14,7 +14,7 @@ it('renders default Toast', () => {
         onPress={() =>
           Toast.show({
             text: 'Wrong password!',
-            buttonText: 'Okay'
+            buttonText: 'Okay',
           })
         }
       >
@@ -34,7 +34,7 @@ it('renders Toast button style', () => {
             text: 'Wrong password!',
             buttonText: 'Okay',
             buttonTextStyle: { color: '#008000' },
-            buttonStyle: { backgroundColor: '#5cb85c' }
+            buttonStyle: { backgroundColor: '#5cb85c' },
           })
         }
       >
@@ -53,7 +53,7 @@ it('renders Toast with duration', () => {
           Toast.show({
             text: 'Wrong password!',
             buttonText: 'Okay',
-            duration: 3000
+            duration: 3000,
           })
         }
       >
@@ -73,7 +73,7 @@ it('renders Toast position', () => {
             Toast.show({
               text: 'Wrong password!',
               buttonText: 'Okay',
-              position: 'top'
+              position: 'top',
             })
           }
         >
@@ -84,7 +84,7 @@ it('renders Toast position', () => {
             Toast.show({
               text: 'Wrong password!',
               buttonText: 'Okay',
-              position: 'bottom'
+              position: 'bottom',
             })
           }
         >
@@ -104,7 +104,7 @@ it('renders Toast Text style', () => {
           Toast.show({
             text: 'Wrong password!',
             textStyle: { color: 'yellow' },
-            buttonText: 'Okay'
+            buttonText: 'Okay',
           })
         }
       >
@@ -123,7 +123,7 @@ it('renders Toast Type', () => {
           onPress={() =>
             Toast.show({
               text: 'Wrong password!',
-              buttonText: 'Okay'
+              buttonText: 'Okay',
             })
           }
         >
@@ -135,7 +135,7 @@ it('renders Toast Type', () => {
             Toast.show({
               text: 'Wrong password!',
               buttonText: 'Okay',
-              type: 'success'
+              type: 'success',
             })
           }
         >
@@ -147,7 +147,7 @@ it('renders Toast Type', () => {
             Toast.show({
               text: 'Wrong password!',
               buttonText: 'Okay',
-              type: 'warning'
+              type: 'warning',
             })
           }
         >
@@ -159,7 +159,7 @@ it('renders Toast Type', () => {
             Toast.show({
               text: 'Wrong password!',
               buttonText: 'Okay',
-              type: 'danger'
+              type: 'danger',
             })
           }
         >

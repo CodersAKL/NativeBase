@@ -6,7 +6,7 @@ type NativeBaseComponentProps = {
 export default class NativeBaseComponent<P = {}, S = {}> extends Component<NativeBaseComponentProps & P, S> {
   getChildContext() {
     return {
-      theme: this.props.theme ? this.props.theme : this.context.theme
+      theme: this.props.theme ? this.props.theme : this.context.theme,
     };
   }
   getContextForegroundColor() {

@@ -26,7 +26,7 @@ class Header extends Component<HeaderProps, {}> {
         />
         <SafeAreaView
           style={{
-            backgroundColor: getStyle(style).backgroundColor
+            backgroundColor: getStyle(style).backgroundColor,
           }}
         >
           <View ref={c => (this._root = c)} {...this.props} />

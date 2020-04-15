@@ -5,34 +5,34 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks', 'jest', 'prettier'],
+  plugins: ['@typescript-eslint', 'import', 'react-hooks', 'jest', 'prettier'],
   env: {
     jest: true,
-    jasmine: true
+    jasmine: true,
   },
   settings: {
     react: {
-      version: 'detect'
+      version: 'detect',
     },
     'import/resolver': {
-      typescript: {}
+      typescript: {},
     },
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
     'import/extensions': ['.ts', '.tsx'],
-    'import/core-modules': ['react', 'react-native']
+    'import/core-modules': ['react', 'react-native'],
   },
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
     optionalChaining: true,
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
     'prettier/prettier': 'error',
@@ -40,32 +40,32 @@ module.exports = {
       'error',
       {
         'newlines-between': 'always',
-        groups: [['builtin', 'external'], ['internal', 'sibling', 'parent', 'index'], 'unknown']
-      }
+        groups: [['builtin', 'external'], ['internal', 'sibling', 'parent', 'index'], 'unknown'],
+      },
     ],
     'react/jsx-filename-extension': [
       'warn',
       {
-        extensions: ['.tsx']
-      }
+        extensions: ['.tsx'],
+      },
     ],
     'padding-line-between-statements': [
       'error',
       {
         blankLine: 'always',
         prev: ['const', 'let', 'var'],
-        next: '*'
+        next: '*',
       },
       {
         blankLine: 'any',
         prev: ['const', 'let', 'var'],
-        next: ['const', 'let', 'var']
+        next: ['const', 'let', 'var'],
       },
       {
         blankLine: 'always',
         prev: '*',
-        next: ['class', 'return', 'export']
-      }
-    ]
-  }
+        next: ['class', 'return', 'export'],
+      },
+    ],
+  },
 };

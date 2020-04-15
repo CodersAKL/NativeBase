@@ -60,7 +60,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
     this.state = {
       dimensionsSet: false,
       hiddenHeight: 0,
-      hiddenWidth: 0
+      hiddenWidth: 0,
     };
     this._translateX = new Animated.Value(0);
   }
@@ -70,7 +70,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
       onPanResponderMove: (e, gs) => this.handlePanResponderMove(e, gs),
       onPanResponderRelease: this.handlePanResponderEnd,
       onPanResponderTerminate: this.handlePanResponderEnd,
-      onShouldBlockNativeResponder: _ => false
+      onShouldBlockNativeResponder: _ => false,
     });
   }
   getPreviewAnimation(toValue: number, delay: number) {
@@ -78,14 +78,14 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
       duration: this.props.previewDuration,
       toValue,
       delay,
-      useNativeDriver: true
+      useNativeDriver: true,
     });
   }
   onContentLayout(e: LayoutChangeEvent) {
     this.setState({
       dimensionsSet: !this.props.recalculateHiddenLayout,
       hiddenHeight: e.nativeEvent.layout.height,
-      hiddenWidth: e.nativeEvent.layout.width
+      hiddenWidth: e.nativeEvent.layout.width,
     });
     if (this.props.preview && !this.ranPreview) {
       this.ranPreview = true;
@@ -189,7 +189,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
       toValue,
       friction: this.props.friction,
       tension: this.props.tension,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start(_ => {
       if (toValue === 0) {
         this.props.onRowDidClose && this.props.onRowDidClose();
@@ -215,7 +215,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
           {...this._panResponder.panHandlers}
           style={{
             transform: [{ translateX: this._translateX }],
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           {!this.props.list ? (
@@ -235,7 +235,7 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
         onLayout={(e: LayoutChangeEvent) => this.onContentLayout(e)}
         style={{
           transform: [{ translateX: this._translateX }],
-          zIndex: 2
+          zIndex: 2,
         }}
       >
         {!this.props.list ? (
@@ -255,9 +255,9 @@ class SwipeRow extends Component<SwipeRowProps, SwipeRowState> {
           style={[
             styles.hidden,
             {
-              height: this.state.hiddenHeight
+              height: this.state.hiddenHeight,
             },
-            styles.wrapper
+            styles.wrapper,
           ]}
         >
           <Left style={{ width: this.props.leftOpenValue, zIndex: 1 }}>{this.props.left}</Left>
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   container: {},
   hidden: {
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     position: 'absolute',
     right: 0,
-    top: 0
+    top: 0,
   },
-  defaultBackgroundColor: { backgroundColor: '#FFF' }
+  defaultBackgroundColor: { backgroundColor: '#FFF' },
 });
