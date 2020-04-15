@@ -16,17 +16,9 @@ import { Badge } from '../../basic/Badge';
 import { Thumbnail } from '../../basic/Thumbnail';
 import { Separator } from '../../basic/Separator';
 
-// Note: test renderer must be required after react-native.
 const pratik = require('../assets/pratik.png');
 const sanket = require('../assets/sanket.png');
 
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders Basic List', () => {
   const datas = [
     'Simon Mignolet',

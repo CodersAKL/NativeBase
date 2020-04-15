@@ -2,18 +2,10 @@ import { View } from 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-// import { View } from "./../../src/basic/View";
 import { Fab } from '../../basic/Fab';
 import { IconNB } from '../../basic/IconNB';
 import { Button } from '../../basic/Button';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders single FAB inactive', () => {
   const tree = renderer
     .create(

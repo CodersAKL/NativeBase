@@ -35,15 +35,12 @@ module.exports = {
     }
   },
   rules: {
+    'prettier/prettier': 'error',
     'import/order': [
       'error',
       {
         'newlines-between': 'always',
-        groups: [
-          ['builtin', 'external'],
-          ['internal', 'sibling', 'parent', 'index'],
-          'unknown'
-        ]
+        groups: [['builtin', 'external'], ['internal', 'sibling', 'parent', 'index'], 'unknown']
       }
     ],
     'react/jsx-filename-extension': [

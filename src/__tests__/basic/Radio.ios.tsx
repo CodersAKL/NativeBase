@@ -8,14 +8,7 @@ import { Left } from '../../basic/Left';
 import { Right } from '../../basic/Right';
 import { Text } from '../../basic/Text';
 import { Radio } from '../../basic/Radio';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders default radio', () => {
   const tree = renderer
     .create(

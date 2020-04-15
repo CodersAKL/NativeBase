@@ -7,7 +7,7 @@ import {
   View,
   ViewStyle,
   TextStyle,
-  StyleProp
+  StyleProp,
 } from 'react-native';
 
 import variable from '../theme/variables/platform';
@@ -47,7 +47,7 @@ class DefaultHeader extends React.Component<DefaultHeaderProps, {}> {
                 : { color: variables.expandedIconStyle }
               : icon && iconStyle
               ? iconStyle
-              : { color: variables.iconStyle }
+              : { color: variables.iconStyle },
           ]}
           name={expanded ? expandedIcon || 'ios-arrow-up' : icon || 'ios-arrow-down'}
         />
@@ -70,7 +70,7 @@ class DefaultContent extends React.Component<DefaultContentProps, {}> {
       <Text
         style={[
           { padding: variable.accordionContentPadding },
-          contentStyle || { backgroundColor: variables.contentStyle }
+          contentStyle || { backgroundColor: variables.contentStyle },
         ]}
       >
         {content}
@@ -85,13 +85,13 @@ interface AccordionSubItemProps {
 
 class AccordionSubItem extends React.Component<AccordionSubItemProps, AccordionSubItemState> {
   state = {
-    fadeAnim: new Animated.Value(0.3)
+    fadeAnim: new Animated.Value(0.3),
   };
   componentDidMount() {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
       duration: 500,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start();
   }
   render() {
@@ -135,7 +135,7 @@ class AccordionItem extends React.Component<AccordionItemProps, {}> {
       onAccordionOpen,
       renderContent,
       renderHeader,
-      setSelected
+      setSelected,
     } = this.props;
 
     return (
@@ -178,26 +178,26 @@ class AccordionItem extends React.Component<AccordionItemProps, {}> {
 }
 
 interface AccordionProps {
-  expanded: boolean;
-  contentStyle: any;
+  expanded?: boolean;
+  contentStyle?: ViewStyle;
   dataArray: any;
-  expandedIcon: IconName;
-  expandedIconStyle: any;
-  headerStyle: any;
-  icon: IconName;
-  iconStyle: any;
-  onAccordionClose: any;
-  onAccordionOpen: any;
-  renderContent: any;
-  renderHeader: any;
-  style: any;
+  expandedIcon?: IconName;
+  expandedIconStyle?: any;
+  headerStyle?: any;
+  icon?: IconName;
+  iconStyle?: any;
+  onAccordionClose?: any;
+  onAccordionOpen?: any;
+  renderContent?: any;
+  renderHeader?: any;
+  style?: ViewStyle;
 }
 
 export class Accordion extends React.Component<AccordionProps, AccordionState> {
   constructor(props: Readonly<AccordionProps>) {
     super(props);
     this.state = {
-      selected: props.expanded
+      selected: props.expanded,
     };
   }
   setSelected(index: number) {
@@ -220,7 +220,7 @@ export class Accordion extends React.Component<AccordionProps, AccordionState> {
       onAccordionOpen,
       renderContent,
       renderHeader,
-      style
+      style,
     } = this.props;
     const variables = this.context.theme ? this.context.theme['@@shoutem.theme/themeStyle'].variables : variable;
 
@@ -231,9 +231,9 @@ export class Accordion extends React.Component<AccordionProps, AccordionState> {
         style={[
           {
             borderColor: variables.accordionBorderColor,
-            borderWidth: variables.borderWidth
+            borderWidth: variables.borderWidth,
           },
-          style
+          style,
         ]}
         keyExtractor={(item, index) => String(index)}
         renderItem={({ item, index }) => (
@@ -265,6 +265,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: variable.accordionContentPadding,
     justifyContent: 'space-between',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });

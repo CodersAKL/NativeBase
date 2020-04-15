@@ -5,16 +5,8 @@ import renderer from 'react-test-renderer';
 import { Content } from '../../basic/Content';
 import { Thumbnail } from '../../basic/Thumbnail';
 
-// Note: test renderer must be required after react-native.
 const cover = require('../assets/drawer-cover.png');
 
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders default shape thumbnail', () => {
   const tree = renderer
     .create(

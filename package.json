@@ -32,13 +32,13 @@
     "url": "https://opencollective.com/NativeBase"
   },
   "scripts": {
-    "test": "jest --noStackTrace --notify --watch",
+    "test": "jest --clearCache && jest --noStackTrace --notify --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "generate": "plop",
     "compile": "rimraf dist/* && tsc -p ./",
     "transpile": "npm run compile && cp src/basic/Icon/NBIcons.json dist/src/basic/Icon",
     "prepublish": "npm run transpile",
-    "postinstall": "node addEjectScript.js",
+    "postinstall": "node .scripts/addEjectScript.js",
     "build:js": "rimraf dist/* && cross-env BABEL_ENV=production babel src --out-dir dist --source-maps --extensions .ts,.tsx",
     "build:types": "dts-generator --name native-base --project ./tsconfig.json --out index.d.ts --main native-base/index --prefix native-base",
     "build:r": "rimraf dist/* && rollup -c"
@@ -95,7 +95,8 @@
     "@typescript-eslint/parser": "^2.19.2",
     "acorn-jsx": "^5.1.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-const-enum": "^1.0.1",
     "babel-plugin-inline-json-import": "^0.3.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-typescript-to-proptypes": "^1.2.1",
@@ -103,6 +104,8 @@
     "detox": "^15.1.4",
     "dts-generator": "^3.0.0",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "eslint": "~6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-import-resolver-typescript": "^2.0.0",
@@ -110,6 +113,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^25.1.0",
+    "jsdom": "^16.2.2",
     "metro-react-native-babel-preset": "^0.59.0",
     "plop": "^2.5.3",
     "prettier": "^1.19.1",
@@ -125,7 +129,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-sourcemaps": "^0.5.0",
     "rollup-plugin-typescript2": "^0.26.0",
-    "ts-jest": "^25.1.0",
+    "ts-jest": "^25.3.1",
     "tsc-silent": "^1.2.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.0-beta",
@@ -134,20 +138,6 @@
   "peerDependencies": {
     "react": ">=16.4.1",
     "react-native": ">=0.56.0"
-  },
-  "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!react-native|@shoutem|react-clone-referenced-element|native-base-shoutem-theme)"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   },
   "detox": {
     "test-runner": "jest",

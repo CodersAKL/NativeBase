@@ -12,14 +12,6 @@ const dataArray = [
   { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' }
 ];
 
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders Regular Accordion', () => {
   const tree = create(
     <Container>

@@ -7,13 +7,6 @@ import { Button } from '../../basic/Button';
 import { Toast } from '../../basic/Toast';
 import { Text } from '../../basic/Text';
 
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders default Toast', () => {
   const tree = renderer
     .create(

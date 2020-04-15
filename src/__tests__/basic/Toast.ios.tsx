@@ -7,16 +7,6 @@ import { Button } from '../../basic/Button';
 import { Toast } from '../../basic/Toast';
 import { Text } from '../../basic/Text';
 
-// Note: test renderer must be required after react-native.
-const cover = require('../assets/drawer-cover.png');
-
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders default Toast', () => {
   const tree = renderer
     .create(

@@ -3,18 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { Content } from '../../basic/Content';
-// import { View } from "./../../src/basic/View";
 import { Button } from '../../basic/Button';
 import { Text } from '../../basic/Text';
 import { Icon } from '../../basic/Icon';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders regular button', () => {
   const tree = renderer
     .create(
@@ -77,36 +69,7 @@ it('renders outline button', () => {
 
   expect(tree).toMatchSnapshot();
 });
-// it("renders rounded button", () => {
-//   const tree = renderer
-//     .create(
-//       <Content>
-//         <Button rounded light>
-//           <Text>Light</Text>
-//         </Button>
-//         <Button rounded info>
-//           <Text>Info</Text>
-//         </Button>
-//         <Button rounded primary>
-//           <Text>Primary</Text>
-//         </Button>
-//         <Button rounded success>
-//           <Text>Success</Text>
-//         </Button>
-//         <Button rounded warning>
-//           <Text>Warning</Text>
-//         </Button>
-//         <Button rounded danger>
-//           <Text>Danger</Text>
-//         </Button>
-//         <Button rounded dark>
-//           <Text>Dark</Text>
-//         </Button>
-//       </Content>
-//     )
-//     .toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+
 it('renders block button', () => {
   const tree = renderer
     .create(

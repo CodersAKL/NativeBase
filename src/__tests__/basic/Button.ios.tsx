@@ -3,18 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { Content } from '../../basic/Content';
-// import { View } from "./../../src/basic/View";
 import { Button } from '../../basic/Button';
 import { Text } from '../../basic/Text';
 import { Icon } from '../../basic/Icon';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders regular button', () => {
   const tree = renderer
     .create(

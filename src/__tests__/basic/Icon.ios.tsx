@@ -6,14 +6,7 @@ import { Content } from '../../basic/Content';
 import { ListItem } from '../../basic/ListItem';
 import { Icon } from '../../basic/Icon';
 import { Text } from '../../basic/Text';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders Icon and Icons with icon family', () => {
   const tree = renderer
     .create(

@@ -11,14 +11,7 @@ import { Body } from '../../basic/Body';
 import { Right } from '../../basic/Right';
 import { Text } from '../../basic/Text';
 import { Segment } from '../../basic/Segment';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders Segments inside Header', () => {
   const tree = renderer
     .create(

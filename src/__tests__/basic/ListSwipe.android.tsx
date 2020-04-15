@@ -7,14 +7,7 @@ import { SwipeRow } from '../../basic/SwipeRow';
 import { Button } from '../../basic/Button';
 import { Icon } from '../../basic/Icon';
 import { Text } from '../../basic/Text';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders regular Single SwipeRow', () => {
   const tree = renderer
     .create(

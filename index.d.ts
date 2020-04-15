@@ -12831,7 +12831,8 @@ declare module 'native-base/basic/Form' {
 }
 declare module 'native-base/basic/Picker' {
 	import { Component } from 'native-base/react';
-	export default class PickerNB extends Component<{}, {}> {
+	import { PickerProps } from 'react-native';
+	export default class PickerNB extends Component<PickerProps, {}> {
 	    render(): JSX.Element;
 	} const StyledPickerNB: any;
 	export { StyledPickerNB as PickerNB };
@@ -13069,12 +13070,28 @@ declare module 'native-base/basic/Subtitle' {
 
 }
 declare module 'native-base/basic/Accordion' {
-	import React from 'native-base/react'; type AccordionState = {
+	import React from 'native-base/react';
+	import { IconName } from 'native-base/basic/Icon'; type AccordionState = {
 	    selected: undefined | any;
 	};
-	export class Accordion extends React.Component<{}, AccordionState> {
-	    constructor(props: any);
-	    setSelected(index: any): void;
+	interface AccordionProps {
+	    expanded: boolean;
+	    contentStyle: any;
+	    dataArray: any;
+	    expandedIcon: IconName;
+	    expandedIconStyle: any;
+	    headerStyle: any;
+	    icon: IconName;
+	    iconStyle: any;
+	    onAccordionClose: any;
+	    onAccordionOpen: any;
+	    renderContent: any;
+	    renderHeader: any;
+	    style: any;
+	}
+	export class Accordion extends React.Component<AccordionProps, AccordionState> {
+	    constructor(props: Readonly<AccordionProps>);
+	    setSelected(index: number): void;
 	    render(): JSX.Element;
 	}
 	export {};

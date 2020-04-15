@@ -6,14 +6,7 @@ import renderer from 'react-test-renderer';
 import { Fab } from '../../basic/Fab';
 import { IconNB } from '../../basic/IconNB';
 import { Button } from '../../basic/Button';
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
 
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders single FAB inactive', () => {
   const tree = renderer
     .create(

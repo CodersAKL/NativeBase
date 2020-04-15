@@ -19,14 +19,6 @@ const deviceWidth = Dimensions.get('window').width;
 const logo = require('../assets/logo.png');
 const cardImage = require('../assets/drawer-cover.png');
 
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'android';
-
-  return Platform;
-});
 it('renders basic Card', () => {
   const tree = renderer
     .create(

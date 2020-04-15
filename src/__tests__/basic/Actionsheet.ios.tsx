@@ -3,26 +3,18 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { Button } from '../../basic/Button';
-import { ActionSheet } from '../../basic/Actionsheet';
+import { ActionSheetContainerComponent } from '../../basic/Actionsheet';
 import { Text } from '../../basic/Text';
 var BUTTONS = ['Option 0', 'Option 1', 'Option 2', 'Delete', 'Cancel'];
 var DESTRUCTIVE_INDEX = 3;
 var CANCEL_INDEX = 4;
 
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders ActionSheet', () => {
   const tree = renderer
     .create(
       <Button
         onPress={() =>
-          ActionSheet.show(
+          ActionSheetContainerComponent.show(
             {
               options: BUTTONS,
               cancelButtonIndex: CANCEL_INDEX,

@@ -20,7 +20,7 @@ type ActionSheetContainerState = {
   items: undefined[];
 };
 
-class ActionSheetContainer extends Component<{}, ActionSheetContainerState> {
+export class ActionSheetContainerComponent extends Component<{}, ActionSheetContainerState> {
   static show(config, callback) {
     this.actionsheetInstance._root.showActionSheet(config, callback);
   }
@@ -31,7 +31,7 @@ class ActionSheetContainer extends Component<{}, ActionSheetContainerState> {
     super(props);
     this.state = {
       modalVisible: false,
-      items: []
+      items: [],
     };
   }
   componentDidMount() {
@@ -61,7 +61,7 @@ class ActionSheetContainer extends Component<{}, ActionSheetContainerState> {
         destructiveButtonIndex: config.destructiveButtonIndex,
         cancelButtonIndex: config.cancelButtonIndex,
         modalVisible: true,
-        callback
+        callback,
       });
     }
   }
@@ -113,8 +113,8 @@ class ActionSheetContainer extends Component<{}, ActionSheetContainerState> {
                     style={[
                       styles.listItem,
                       {
-                        height: commonColor.listItemHeight
-                      }
+                        height: commonColor.listItemHeight,
+                      },
                     ]}
                     icon
                   >
@@ -123,7 +123,7 @@ class ActionSheetContainer extends Component<{}, ActionSheetContainerState> {
                         name={item.icon}
                         type={item.iconType}
                         style={{
-                          color: item.iconColor ? item.iconColor : undefined
+                          color: item.iconColor ? item.iconColor : undefined,
                         }}
                       />
                     </Left>
@@ -145,34 +145,34 @@ const styles = StyleSheet.create({
   containerTouchable: {
     backgroundColor: commonColor.containerTouchableBackgroundColor,
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   flatList: {
-    marginHorizontal: commonColor.marginHorizontal
+    marginHorizontal: commonColor.marginHorizontal,
   },
   innerTouchable: {
     backgroundColor: commonColor.innerTouchableBackgroundColor,
     minHeight: commonColor.minHeight,
     maxHeight: Dimensions.get('window').height / 2,
     padding: commonColor.padding,
-    elevation: commonColor.elevation
+    elevation: commonColor.elevation,
   },
   listItem: {
     borderColor: commonColor.listItemBorderColor,
-    marginLeft: commonColor.marginLeft
+    marginLeft: commonColor.marginLeft,
   },
   listItemBody: {
     borderColor: commonColor.listItemBorderColor,
-    paddingLeft: commonColor.marginLeft / 2
+    paddingLeft: commonColor.marginLeft / 2,
   },
   touchableText: {
-    color: commonColor.touchableTextColor
-  }
+    color: commonColor.touchableTextColor,
+  },
 });
 const StyledActionSheetContainer = connectStyle(
   'NativeBase.ActionSheetContainer',
   {},
   mapPropsToStyleNames
-)(ActionSheetContainer);
+)(ActionSheetContainerComponent);
 
 export { StyledActionSheetContainer as ActionSheetContainer };

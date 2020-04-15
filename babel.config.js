@@ -6,8 +6,8 @@ module.exports = {
       {
         comments: true,
         strict: true,
-        typeCheck: true
-      }
-    ]
-  ]
+        typeCheck: true,
+      },
+    ],
+  ],
 };

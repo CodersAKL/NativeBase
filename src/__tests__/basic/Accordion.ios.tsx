@@ -12,21 +12,13 @@ const dataArray = [
   { title: 'Third Element', content: 'Lorem ipsum dolor sit amet' }
 ];
 
-// Note: test renderer must be required after react-native.
-jest.mock('react-native/Libraries/Utilities/Platform', () => {
-  const Platform = require.requireActual('react-native/Libraries/Utilities/Platform');
-
-  Platform.OS = 'ios';
-
-  return Platform;
-});
 it('renders Regular Accordion', () => {
   const tree = renderer
     .create(
       <Container>
         <Header />
         <Content padder>
-          <Accordion dataArray={dataArray} expanded={0} />
+          <Accordion dataArray={dataArray} expanded />
         </Content>
       </Container>
     )
